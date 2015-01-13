@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  
+<!-- HEADER AND COMPANY COUNT -->
+  <div class="jumbotron text-center">
+    <h1> Portfolio App <span class="label label-info">{{ companies.length }}</span></h1>
+  </div>
+
+      <div class="gridStyle" ng-grid="gridOptions"></div>
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      Search: <input ng-model="query">
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="CompanyName">Company Name</option>
+        <option value="RSVInvestment">RSV Investment Size</option>
+      </select>
+
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+      <!--Body content-->
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Company Name</th>
+                  <th>RSV Investment</th>
+                  <th>Total Round Size</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="company in companies | filter:query | orderBy:orderProp" >
+          
+          <td><label>
+              <input type="checkbox"></input>
+          </label></td>
+
+          <td >{{company.CompanyName}}</td>
+          <td >{{company.RSVInvestment}}</td>
+          <td >{{company.TotalRoundSize}}</td>
+        </tr>
+      </tbody>
+      </table>
+
+    
+    </div>
+  </div>
+</div>

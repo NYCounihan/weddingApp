@@ -1,40 +1,50 @@
-
-/**
- * Module dependencies.
- */
-
+// set up ======================================================================
 var express = require('express')
-  , routes = require('./routes')
-  , inventory = require('./routes/inventory')
-  , user = require('./routes/user')
+  , app = express()
+  , mongoose = require('mongoose')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , data = require('./model/db')
+  , router = require('./routes/routes.js');
 
-var app = express();
 
-// all environments
+  //  var favicon = require('serve-favicon');
+    var logger = require('morgan');
+    var methodOverride = require('method-override');
+    var session = require('express-session');
+    var bodyParser = require('body-parser');
+    var multer = require('multer');
+    var errorHandler = require('errorhandler');
+
+// configuration ==================================================================
 app.set('port', process.env.PORT || 3000);
-//deliver dynamic template files
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/views'); //deliver dynamic template files
 app.set('view engine', 'ejs');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-//middleware to handle post data
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
-//deliver things like images and such
-app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
 
-//get response (use app.post for post request)
-app.get('/', routes.index);
-app.get('/inventory', inventory.showInventory);
-app.get('/users', user.list);
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(methodOverride());
+app.use(session({ resave: true, saveUninitialized: true, 
+                  secret: 'uwotm8' }));
+
+// parse application/json
+app.use(bodyParser.json());                        
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse multipart/form-data
+app.use(multer());
+
+
+//app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public'))); //deliver things like images and such
+
+// routes ======================================================================
+//require('./routes/routes.js')(app);
+
+app.use('/', require('./routes/routes.js'));
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
