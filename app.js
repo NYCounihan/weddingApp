@@ -16,36 +16,33 @@ var express = require('express')
     var multer = require('multer');
     var errorHandler = require('errorhandler');
 
-// configuration ==================================================================
-app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views'); //deliver dynamic template files
-app.set('view engine', 'ejs');
+    // configuration ==================================================================
+    app.set('port', process.env.PORT || 3000);
+    app.set('views', __dirname + '/views'); //deliver dynamic template files
+    app.set('view engine', 'ejs');
 
+    //app.use(favicon(__dirname + '/public/favicon.ico'));
+    app.use(logger('dev'));
+    app.use(methodOverride());
+    app.use(session({ resave: true, saveUninitialized: true, secret: 'uwotm8' }));
 
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(methodOverride());
-app.use(session({ resave: true, saveUninitialized: true, 
-                  secret: 'uwotm8' }));
+    // parse application/json
+    app.use(bodyParser.json());                        
 
-// parse application/json
-app.use(bodyParser.json());                        
+    // parse application/x-www-form-urlencoded
+    app.use(bodyParser.urlencoded({ extended: true }));
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+    // parse multipart/form-data
+    app.use(multer());
 
-// parse multipart/form-data
-app.use(multer());
+    //app.use(app.router);
+    app.use(express.static(path.join(__dirname, 'public'))); //deliver things like images and such
 
+    // routes ======================================================================
+    //require('./routes/routes.js')(app);
 
-//app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public'))); //deliver things like images and such
+    app.use('/', require('./routes/routes.js'));
 
-// routes ======================================================================
-//require('./routes/routes.js')(app);
-
-app.use('/', require('./routes/routes.js'));
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+    http.createServer(app).listen(app.get('port'), function(){
+      console.log('Express server listening on port ' + app.get('port'));
+    });
