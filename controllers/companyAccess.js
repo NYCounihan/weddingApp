@@ -13,8 +13,8 @@ exports.create = function(strName, intInvestment, intTotalRoundSize) {
 
 exports.read = function(strName, cb) {
     console.log("mongoose CompanyAccess.js : reading " + strName);
-
-    var query = Company.findOne({CompanyName: strName}).select({CompanyName: strName, RSVInvestment : true, TotalRoundSize : true, _id : false});
+    // var query = Company.findOne({CompanyName: strName}).select({CompanyName: strName, RSVInvestment : true, TotalRoundSize : true, _id : false});
+    var query = Company.findOne({CompanyName: strName});
     
     query.exec(function (err, companies) {
         if (err) {
