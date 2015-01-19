@@ -6,18 +6,29 @@
     "start": "node app.js"
   },
   "dependencies": {
+    
+    "bcrypt-nodejs" : "*",
+    "body-parser": "1.8",
+    "connect-flash" : "*",
     "express": "*",
     "ejs": "*",
-    "serve-favicon": "2",
-    "morgan": "1.3.*",
-    "method-override":"*",
-    "body-parser": "1.8",
+    
     "errorhandler": "*",
     "express-session": "*",
-    "multer": "0.1.*",
+    
+    "serve-favicon": "2",
+
+    "static-favicon": "~1.0.0",
+    
+    "morgan": "1.3.*",
+    "method-override":"*",
     "mongodb": "*",
     "mongoose": "*",
-    "mongodb-uri": "*"
+    "mongodb-uri": "*",
+    "multer": "0.1.*",
+    
+    "passport": "~0.2.0",
+    "passport-local": "~1.0.0"
   },
    "engines": {
     "node": "0.10.x",

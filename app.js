@@ -8,15 +8,21 @@ var express = require('express')
   , router = require('./routes/routes.js');
 
 
-  //  var favicon = require('serve-favicon');
+  //  var favicon = require('serve-favicon'); 
     var logger = require('morgan');
     var methodOverride = require('method-override');
-    var session = require('express-session');
     var bodyParser = require('body-parser');
     var multer = require('multer');
     var errorHandler = require('errorhandler');
 
-    // configuration ==================================================================
+// Configuring Passport ==================================================================
+    var passport = require('passport');
+    var expressSession = require('express-session');
+    app.use(expressSession({resave: true, saveUninitialized: true, secret: 'uwotm8' }));
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+// configuration ==================================================================
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views'); //deliver dynamic template files
     app.set('view engine', 'ejs');
@@ -24,7 +30,6 @@ var express = require('express')
     //app.use(favicon(__dirname + '/public/favicon.ico'));
     app.use(logger('dev'));
     app.use(methodOverride());
-    app.use(session({ resave: true, saveUninitialized: true, secret: 'uwotm8' }));
 
     // parse application/json
     app.use(bodyParser.json());                        
@@ -35,13 +40,17 @@ var express = require('express')
     // parse multipart/form-data
     app.use(multer());
 
-    //app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public'))); //deliver things like images and such
 
-    // routes ======================================================================
-    //require('./routes/routes.js')(app);
+// passport ======================================================================
+    var flash = require('connect-flash');
+    app.use(flash());
+    var initPassport = require('./passport/init');
+    initPassport(passport);
 
+// routes ======================================================================
     app.use('/', require('./routes/routes.js'));
+    app.use('/', require('./routes/passportRoutes.js')(passport));
 
     http.createServer(app).listen(app.get('port'), function(){
       console.log('Express server listening on port ' + app.get('port'));
