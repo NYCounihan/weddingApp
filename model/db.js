@@ -2,6 +2,7 @@
 var mongoose = require( 'mongoose' );
 // mongodb-uri 0.9.x
 var uriUtil = require('mongodb-uri');
+var dbURI = require('./dbconfig.js');
 
 /* 
  * Mongoose by default sets the auto_reconnect option to true.
@@ -12,9 +13,6 @@ var uriUtil = require('mongodb-uri');
 var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };       
  
-// Build the connection string
-var dbURI = 'mongodb://user2:password@ds027761.mongolab.com:27761/testdbnycounihan';
-
 var mongooseUri = uriUtil.formatMongoose(dbURI);
 
 // Create the database connection
