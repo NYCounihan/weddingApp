@@ -49,9 +49,10 @@ var express = require('express')
     initPassport(passport);
 
 // routes ======================================================================
-    app.use('/', require('./routes/routes.js'));
-    app.use('/', require('./routes/passportRoutes.js')(passport));
+      app.use('/', require('./routes/routes.js'));
+      app.use('/', require('./routes/passportRoutes.js')(passport));
 
     http.createServer(app).listen(app.get('port'), function(){
       console.log('Express server listening on port ' + app.get('port'));
+    
     });

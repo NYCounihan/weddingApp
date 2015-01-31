@@ -68,7 +68,8 @@ var isAuthenticated = function (req, res, next) {
 		companyDB.update(req.body);
 	});
 
-	routes.get('/', isAuthenticated, function(req, res) {
+	//routes.get('/', isAuthenticated, function(req, res) {
+  	routes.get('/', function(req, res) {
   		res.render('index', { title: 'Express' });
 	});
 
