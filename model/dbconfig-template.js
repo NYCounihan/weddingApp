@@ -1,0 +1,1 @@
+module.exports = 'mongodb://<username>:<password>@<server>:<database>/<collection>';
