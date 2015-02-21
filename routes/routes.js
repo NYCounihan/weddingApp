@@ -1,4 +1,4 @@
-var companyDB = require( '../controllers/companyAccess.js' );
+//var companyDB = require( '../controllers/companyAccess.js' );
 var express = require('express');
 var routes = express.Router();
 

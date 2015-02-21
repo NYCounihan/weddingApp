@@ -45,8 +45,8 @@ var express = require('express')
 // passport ======================================================================
     var flash = require('connect-flash');
     app.use(flash());
-    var initPassport = require('./passport/init');
-    initPassport(passport);
+    //var initPassport = require('./passport/init');
+    //initPassport(passport);
 
 // routes ======================================================================
       app.use('/', require('./routes/routes.js'));

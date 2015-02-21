@@ -16,7 +16,7 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
 var mongooseUri = uriUtil.formatMongoose(dbURI);
 
 // Create the database connection
-mongoose.connect(mongooseUri);
+/*mongoose.connect(mongooseUri);
 
 // CONNECTION EVENTS
 // When successfully connected
@@ -45,4 +45,4 @@ process.on('SIGINT', function() {
 
 // BRING IN YOUR SCHEMAS & MODELS
 // For example
-require('./company');
+require('./company'); */
