@@ -1,4 +1,6 @@
-
+/*----------------------------------------------*/
+/* Custom Helper Classes */
+/*----------------------------------------------*/
 
 .clearfix() {
   &:before,
@@ -11,22 +13,6 @@
   }
 }
 
-@media screen and (min-width:600px) {
-  nav {
-    /* float: left;*/
-    /* width: 25%;*/
-  }
-  section {
-    /* margin-left: 25%;*/
-  }
-}
-@media screen and (max-width:599px) {
-  nav li {
-   /* display: inline; */
-  }
-}
-
-
 body {
   font-family: Lato,sans-serif;
   color: #333;
@@ -34,12 +20,10 @@ body {
   line-height: 20px;
 }
 
-.main-box-image {
-  margin-left: auto;
-  margin-right: auto;
-  min-width: 300px;
-  min-height: 300px;
-}
+/*----------------------------------------------*/
+/* Main Content */
+/*----------------------------------------------*/
+
 
 /* centered columns styles */
 .row-centered {
@@ -82,7 +66,7 @@ body {
   font-weight:400;
   line-height:1em;
   letter-spacing:1px;
-  border-bottom: 1px solid #D8D8D7;
+  border-bottom: 1px solid #a6c554;
 }
 
 .box-subtitle {
@@ -110,7 +94,6 @@ body {
   margin-top: 4px;
 }
 
-
 /*----------------------------------------------*/
 /* Header */
 /*----------------------------------------------*/
@@ -122,7 +105,6 @@ body {
   line-height:1.4em;
   position:relative;
   padding-top: 25px;}
-
 
 .head_title {
   height:83px;
@@ -140,7 +122,7 @@ body {
 .sub_title {
   text-transform:uppercase;
   font-size:15px;
-  color:#f67320;
+  color:#cc0a29;
   font-family: 'Copse', Georgia, Times, serif;}
 
 .sub_title sup {
@@ -150,12 +132,11 @@ body {
 .head_name {
   display:inline-block;
   color:#3f403f;
-  border-top:3px double #d8d8d7;
-  border-bottom:3px double #d8d8d7;
+  border-top:3px double #a6c554;
+  border-bottom:3px double #a6c554;
   text-shadow:0 1px 1px #fff;
   text-transform:uppercase;
   text-align: center;
-  width: 33%;
   padding-top:20px;
   padding-bottom:20px;
   height: auto;}
@@ -183,36 +164,6 @@ body {
   height: auto;
 }
 
-    /*==========  Mobile First Method  ==========*/
-
-    /* Custom, iPhone Retina */ 
-    @media only screen and (min-width : 320px) {
-        
-    }
-
-    /* Extra Small Devices, Phones */ 
-    @media only screen and (min-width : 480px) {
-
-    }
-
-    /* Small Devices, Tablets */
-    @media only screen and (min-width : 768px) {
-
-    }
-
-    /* Medium Devices, Desktops */
-    @media only screen and (min-width : 992px) {
-
-    }
-
-    /* Large Devices, Wide Screens */
-    @media only screen and (min-width : 1200px) {
-
-    }
-
-    /* vertical alignment styles */
-
-
 /* columns of same height styles */
 
 .row-full-height {
@@ -234,32 +185,59 @@ body {
   float: none !important;
 }
 
-@media (max-width: 768px) {
-  .col-sm-height {
-    display: table-cell;
-    float: none !important;
-  }
+/*----------------------------------------------*/
+/* Media Queries */
+/*----------------------------------------------*/
+
+/* Custom, iPhone Retina */ 
+
+@media only screen and (max-width : 320px) {
+      .head_name {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
 }
 
-@media (min-width: 768px) {
-  .col-sm-height {
-    display: table-cell;
-    float: none !important;
-  }
+
+@media only screen and (min-width : 320px) {
+      .col-sm-height {
+        display: table-cell;
+        float: none !important;
+      }
 }
 
-@media (min-width: 992px) {
-  .col-md-height {
-    display: table-cell;
-    float: none !important;
-  }
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+      .col-sm-height {
+        display: table-cell;
+        float: none !important;
+      }
 }
-@media (min-width: 1200px) {
-  .col-lg-height {
-    display: table-cell;
-    float: none !important;
-  }
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+     .col-sm-height {
+        display: table-cell;
+        float: none !important;
+      }       
 }
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+      .col-md-height {
+        display: table-cell;
+        float: none !important;
+      }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+      .col-lg-height {
+        display: table-cell;
+        float: none !important;
+      }
+}
+
 
 
 [class*="col-"] {
