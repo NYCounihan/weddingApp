@@ -113,7 +113,7 @@ body {
 .head_title h1, .head_title strong {
   display:block;
   color:#404040;
-  font-size:20px;
+  font-size:25px;
   margin:0;
   padding:12px 0 10px;
   font-weight:normal;
@@ -121,7 +121,7 @@ body {
 
 .sub_title {
   text-transform:uppercase;
-  font-size:15px;
+  font-size:20px;
   color:#cc0a29;
   font-family: 'Copse', Georgia, Times, serif;}
 
@@ -144,7 +144,7 @@ body {
 .head_name strong {
   display:block;
   font-family: 'Six Caps', sans-serif;
-  font-size:62px;
+  font-size:90px;
   font-weight:400;
   line-height:1em;
   letter-spacing:1px;}
