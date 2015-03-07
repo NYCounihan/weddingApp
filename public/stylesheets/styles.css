@@ -191,18 +191,22 @@ body {
 
 /* Custom, iPhone Retina */ 
 
-@media only screen and (max-width : 320px) {
-      .head_name {
-        padding-left: 0px;
-        padding-right: 0px;
-      }
-}
-
-
 @media only screen and (min-width : 320px) {
       .col-sm-height {
         display: table-cell;
         float: none !important;
+      }
+}
+
+
+@media only screen and (max-width : 480px) {
+      .head_name {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+
+      .head_name strong{
+        font-size:62px;
       }
 }
 
