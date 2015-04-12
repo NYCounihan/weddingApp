@@ -24,6 +24,17 @@ body {
 /* Main Content */
 /*----------------------------------------------*/
 
+@font-face {
+    font-family: titleScript;
+    src: url(scriptFont.ttf);
+}
+
+.scriptTitle {
+
+  font-family: titleScript;
+  font-size: 80px;
+  color:#000;
+}
 
 /* centered columns styles */
 .row-centered {
@@ -40,7 +51,7 @@ body {
 .col-fixed {
     /* custom width */
     width:300px;
-    height: 500px;
+    height: 500px; */
     padding: 0 !important;
     overflow: hidden;
     margin-top: -6px !important;
@@ -185,6 +196,11 @@ body {
   float: none !important;
 }
 
+.navigation-bar-building{
+
+  height:90px;
+  margin-top: -33px;
+}
 /*----------------------------------------------*/
 /* Media Queries */
 /*----------------------------------------------*/
@@ -195,6 +211,12 @@ body {
       .col-sm-height {
         display: table-cell;
         float: none !important;
+      }
+
+    .scriptTitle{
+        text-align: center;
+        height: 90px;
+        margin-top: 80px;
       }
 }
 
@@ -216,6 +238,20 @@ body {
         display: table-cell;
         float: none !important;
       }
+
+}
+
+@media only screen and (max-width : 768px) {
+    .scriptTitle{
+        text-align: center;
+        height: 90px;
+        margin-top: 65px;
+        font-size:60px;
+      }
+
+    .navigation-bar-building {
+      display: none;
+    }
 }
 
 /* Small Devices, Tablets */
@@ -223,7 +259,38 @@ body {
      .col-sm-height {
         display: table-cell;
         float: none !important;
-      }       
+      }
+      .navbar-fixed-top{
+        position:relative;
+      }
+
+      .navbar-brand{
+        display:none;
+      }
+
+      .scriptTitle{
+        text-align: center;
+        height: 90px;
+        margin-top: 30px;
+      }
+
+      .navbar-container {
+        width:700px;
+        text-align:center;
+        border-top: 2px solid #000;
+        border-bottom: 2px solid #000;
+        height: 52px;
+        padding: 0px !important;
+      }
+
+      .navbar {
+        background-color: #fff;
+        border: 0px;
+      }
+
+      .navbar-nav li {width: 100px;}
+
+
 }
 
 /* Medium Devices, Desktops */
