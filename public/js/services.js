@@ -2,9 +2,9 @@
 
 // ANGULAR SERVICES ======================================================================
 
-var companyServices = angular.module('companyServices', ['ngResource']);
+var companyServices = angular.module('WeddingServices', ['ngResource']);
 
- companyServices.factory("Company", ['$resource',
+ companyServices.factory("Wedding", ['$resource',
 	function($resource) {
   		return $resource("/api/companies/:CompanyName", { CompanyName : "@CompanyName" },
 	    	{

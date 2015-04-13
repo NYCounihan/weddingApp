@@ -7,7 +7,6 @@ var express = require('express')
   , data = require('./model/db')
   , router = require('./routes/routes.js');
 
-
   //  var favicon = require('serve-favicon'); 
     var logger = require('morgan');
     var methodOverride = require('method-override');
@@ -50,7 +49,7 @@ var express = require('express')
 
 // routes ======================================================================
       app.use('/', require('./routes/routes.js'));
-      app.use('/', require('./routes/passportRoutes.js')(passport));
+    //  app.use('/', require('./routes/passportRoutes.js')(passport));
 
     http.createServer(app).listen(app.get('port'), function(){
       console.log('Express server listening on port ' + app.get('port'));

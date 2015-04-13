@@ -1,7 +1,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
     <meta charset="utf-8">
-    <title>WEDDING WEDDING WEDDING WEDDING WEDDING</title>
+    <title>Julian & Emily's Wedding</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- bootstrap javascript files -->
@@ -14,8 +14,25 @@
     <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
     
+    <!-- angular files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
+
+    <!-- google map files -->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="js/googlemap.js"></script>
+
+    <!-- local angular files -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+
+    <!-- script references -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
 
     <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,119 +44,9 @@
 
      <style>
       #map-canvas {
-        width: 270px;
-        height: 600px;
+        width: 345px;
+        height: 300px;
       }
     </style>
-
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script>
-     
-      var map;
-      function initialize() {
-        map = new google.maps.Map(document.getElementById('map-canvas'), {
-          zoom: 13,
-          center: new google.maps.LatLng(40.7358726,-73.9939717),
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          styles: [
-            { "featureType": "road", "elementType": "geometry", "stylers": [ { "visibility": "simplified" }, { "color": "#ee6d77" } ] }, {
-              featureType: 'road',
-              elementType: 'labels',
-              stylers: [ { "visibility": "simplified" }, { "color": "#838383" }
-              ]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'all',
-              stylers: [
-                { visibility: 'off' }
-              ]
-            },
-            {
-              featureType: 'landscape',
-              elementType: 'all',
-              stylers: [
-                { visibility: 'off' }
-              ]
-            },
-            {
-              featureType: 'administrative',
-              elementType: 'all',
-              stylers: [
-                { visibility: 'off' }
-              ]
-            },{
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [
-                { color: '#424242' }
-              ]
-            }, { "featureType": "water", "elementType": "labels", "stylers": [ { "visibility": "off" } ] }
-            
-
-          ]
-        });
-
-        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        var icons = {
-          parking: {
-            name: 'Parking',
-            icon: iconBase + 'parking_lot_maps.png'
-          },
-          library: {
-            name: 'Library',
-            icon: iconBase + 'library_maps.png'
-          },
-          info: {
-            name: 'Info',
-            icon: 'https://d30y9cdsu7xlg0.cloudfront.net/png/114393-200.png'
-          }
-        };
-
-        function addMarker(feature) {
-          var marker = new google.maps.Marker({
-            position: feature.position,
-            /* icon: icons[feature.type].icon, */
-            map: map
-          });
-        }
-
-        var features = [
-          {
-            position: new google.maps.LatLng(40.7358726,-73.9939717),
-            type: 'info'
-          }, {
-            position: new google.maps.LatLng(-33.91539, 151.22820),
-            type: 'info'
-          }, {
-            position: new google.maps.LatLng(-33.91747, 151.22912),
-            type: 'info'
-          }, {
-            position: new google.maps.LatLng(-33.91910, 151.22907),
-            type: 'info'
-          }, {
-            position: new google.maps.LatLng(-33.91725, 151.23011),
-            type: 'info'
-          }
-        ];
-
-        for (var i = 0, feature; feature = features[i]; i++) {
-          addMarker(feature);
-        }
-
-        var legend = document.getElementById('legend');
-        for (var key in icons) {
-          var type = icons[key];
-          var name = type.name;
-          var icon = type.icon;
-          var div = document.createElement('div');
-          div.innerHTML = '<img src="' + icon + '"> ' + name;
-          legend.appendChild(div);
-        }
-
-        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
-      }
-
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+  
 </head>

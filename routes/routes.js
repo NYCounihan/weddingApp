@@ -73,4 +73,7 @@ var isAuthenticated = function (req, res, next) {
   		res.render('index', { title: 'Express' });
 	});
 
+	routes.get('*', function(req, res) {
+  		res.render('index', { title: 'Express' });
+	});
 module.exports = routes;

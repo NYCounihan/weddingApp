@@ -1,68 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="weddingApp">
 
 <%- include header.ejs %>
 
 <body>
 
-<div class="container-fluid">
+    <div class="container-fluid">
 
-<div class="header">
-  <div class="row scriptTitle visible-sm visible-md visible-lg">
-      <div class="col-xs-12">
-        Julian & Emily
-      </div>
-  </div>
-  <div class="row scriptTitle visible-xs ">
-      <div class="col-xs-12">
-        Julian
-      </div>
-      <div class="col-xs-12" style="margin-top: 25px;">
-        &
-      </div>
-      <div class="col-xs-12" style="margin-top: 25px; margin-bottom:30px;">
-        Emily
-      </div>
-  </div>
+      <div class="header">
+        <%- include navigation-bar-public.ejs %>
+      </div><!--/ header -->
 
-  <%- include navigation-bar-public.ejs %>
-</div><!--/ header -->
+      <div class="clearfix" style="clear: both"></div>
+       
+      <div class="view-container">
+        <div ng-view class="view-frame"></div>
+      </div> 
+              
+      <div class="clearfix" style="clear: both"></div>
 
-
-<div class="clearfix" style="clear: both"></div>
- 
-        <div class="head_title ">
-            <h1>We’re Getting Married</h1>
-            <p class="sub_title">SATURDAY, 25<sup>th</sup> JULY 2015</p>
-        </div>
-
-        <!--/main-->
-        <div style="padding-top: 10px;" data-spy="scroll" data-target="#sidebar-nav">
-        
-          <div class="row row-centered ">
-
-              <div class="col-sm-1 col-md-6 col-lg-6 col-centered col-fixed">
-                    <ul>
-                          <li> Rehearsal Dinner on Friday, July 24th</li>
-                          <li> Wedding Ceremony on Saturday, July 25th @ Christ Church (<a href="https://www.google.com/maps/place/Christ+Church+United+Methodist/@40.76383,-73.969527,17z/data=!3m1!4b1!4m2!3m1!1s0x89c258ef8d7fa025:0x41dc60e0c1511e04">map</a>) </li>
-                          <li> Reception on Saturday, July 25th @ 80 5th Avenue (<a href="https://www.google.com/maps/place/80+Fifth+Avenue,+New+York,+NY+10011/@40.7360294,-73.9941595,19z/data=!3m1!4b1!4m7!1m4!3m3!1s0x89c2599813fde7e5:0x959cee4cc0574535!2s80+5th+Ave,+New+York,+NY+10011!3b1!3m1!1s0x89c2599819acc423:0x5c542860733e3099">map</a>)</li>
-                    </ul>
-              </div>
-                
-
-              <div class="col-sm-1 col-md-6 col-lg-6 col-centered col-fixed">
-                    <div id="map-canvas"></div>
-              </div>
-                
-
-              </div>
-              </div> <!--/ row -->
-
-      </div><!--/.data spy-->
-
-      <div class="clearfix"></div>
-          
     </div><!--/.container fluid-->
 
-  </body>
+</body>
 </html>

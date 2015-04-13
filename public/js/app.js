@@ -2,28 +2,49 @@
 
 /* App Module */
 
-var companyApp = angular.module('companyApp', [
+var weddingApp = angular.module('weddingApp', [
   'ngRoute',
-  'companyControllers',
-  'companyServices'
-  //'ngGrid'
+  'weddingControllers'
 ]); 
 
-companyApp.config(['$routeProvider',
-  function($routeProvider) {
+weddingApp.config(['$routeProvider', '$locationProvider',
+  function($routeProvider,$locationProvider) {
     $routeProvider.
-      when('/', {
-        templateUrl: 'partials/company-list.html',
-        controller: 'CompanyListCtrl'
+      when('/schedule', {
+        templateUrl: 'partials/schedule.html',
+        controller: 'ScheduleCtrl'
       }).
-      when('/companies/:CompanyName', {
-        templateUrl: 'partials/company-detail.html',
-        controller: 'CompanyDetailCtrl'
+      when('/rsvp', {
+        templateUrl: 'partials/blank.html',
+        controller: 'RSVPCtrl'
+      }).
+      when('/registry', {
+        templateUrl: 'partials/blank.html',
+        controller: 'RegistryCtrl'
+      }).
+      when('/hotels', {
+        templateUrl: 'partials/hotels.html',
+        controller: 'HotelsCtrl'
+      }).
+      when('/travel', {
+        templateUrl: 'partials/blank.html',
+        controller: 'TravelCtrl'
+      }).
+      when('/tips', {
+        templateUrl: 'partials/blank.html',
+        controller: 'TipsCtrl'
+      }).
+      when('/', {
+        templateUrl: 'partials/schedule.html',
+        controller: 'ScheduleCtrl'
       }).
       otherwise({
         redirectTo: '/',  
-        templateUrl: 'partials/company-list.html',
-        controller: 'CompanyListCtrl'
-      });                
+        templateUrl: 'partials/schedule.html',
+        controller: 'ScheduleCtrl'
+      });
+
+      // use the HTML5 History API
+      $locationProvider.html5Mode(true);             
   }]); 
 
