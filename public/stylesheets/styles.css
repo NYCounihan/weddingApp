@@ -13,6 +13,8 @@
   }
 }
 
+
+
 body {
   font-family: Lato,sans-serif;
   color: #333;
@@ -23,6 +25,56 @@ body {
 /*----------------------------------------------*/
 /* Main Content */
 /*----------------------------------------------*/
+
+.hotel-title-description {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.hotel-description {
+  text-align: left;
+  padding: 5px;
+}
+
+.hotel-title {
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 2px;
+  font-family: "Copse",Georgia,Times,serif;
+}
+
+.hotel-title a {
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 2px;
+  font-family: "Copse",Georgia,Times,serif;
+}
+
+.col-box-content {
+     /* custom width */
+    width:350px;
+    /* height: 500px; */
+    vertical-align: top;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#gmaps {
+    width: 345px;
+    height: 300px;
+}
+
+.main-content-container {
+  margin-top: 25px;
+}
+
+.view-container {
+  text-align: center;
+}
 
 @font-face {
     font-family: titleScript;
@@ -52,7 +104,8 @@ body {
 .col-fixed {
     /* custom width */
     width:350px;
-    height: 500px;
+    /* height: 500px; */
+    vertical-align: top;
     padding: 0 !important;
     overflow: hidden;
     margin-top: -6px !important;
@@ -240,12 +293,6 @@ body {
         display: table-cell;
         float: none !important;
       }
-
-    .scriptTitle{
-        text-align: center;
-        height: 90px;
-        margin-top: 80px;
-      }
 }
 
 
@@ -274,8 +321,14 @@ body {
         text-align: center;
         height: 90px;
         margin-top: 65px;
+        line-height:0.75em;
         font-size:60px;
+        margin-bottom: 20px;
       }
+
+    .head_title{
+      margin-top: 10px;
+    }
 
     .navigation-bar-building {
       display: none;
