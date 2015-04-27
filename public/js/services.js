@@ -2,19 +2,21 @@
 
 // ANGULAR SERVICES ======================================================================
 
-var companyServices = angular.module('WeddingServices', ['ngResource']);
+var companyServices = angular.module('weddingService', ['ngResource']);
 
- companyServices.factory("Wedding", ['$resource',
+ companyServices.factory("Guest", ['$resource',
 	function($resource) {
-  		return $resource("/api/companies/:CompanyName", { CompanyName : "@CompanyName" },
+  		return $resource("/api/guests/:GuestName", { GuestName : "@GuestName" },
 	    	{
-      		'create':   { method: 'POST', params:{CompanyName:'@CompanyName'}},
+      		//'create':   { method: 'POST', params:{GuestName:'@GuestName'}},
+          'create':   { method: 'POST', isArray: true},
       		'index':    { method: 'GET', isArray: true },
           //'query':    { method: 'GET', params:{CompanyName:'@CompanyName'}, transformResponse: function (data) {return { list : angular.fromJson(data) } }, isArray: true},
-          'query':    { method: 'GET', params:{CompanyName:'@CompanyName'}, isArray: false},
+          'query':    { method: 'GET', params:{GuestName:'@GuestName'}},
       		'update':   { method: 'PUT' },
-      		'delete':   { method: 'DELETE', params:{CompanyName:'Apple'} }
+      		'delete':   { method: 'DELETE', params:{GuestName:'@GuestName'}, isArray: false}
     		}
-  		);
+        
+  		)
 	}
   ]);

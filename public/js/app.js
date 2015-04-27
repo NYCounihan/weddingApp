@@ -4,7 +4,8 @@
 
 var weddingApp = angular.module('weddingApp', [
   'ngRoute',
-  'weddingControllers'
+  'weddingControllers',
+  'weddingService'
 ]); 
 
 weddingApp.config(['$routeProvider', '$locationProvider',
@@ -15,8 +16,12 @@ weddingApp.config(['$routeProvider', '$locationProvider',
         controller: 'ScheduleCtrl'
       }).
       when('/rsvp', {
-        templateUrl: 'partials/blank.html',
+        templateUrl: 'partials/rsvp.html',
         controller: 'RSVPCtrl'
+      }).
+       when('/guestdetails', {
+        templateUrl: 'partials/guestdetails.html',
+        controller: 'GuestDetailsCtrl'
       }).
       when('/registry', {
         templateUrl: 'partials/blank.html',

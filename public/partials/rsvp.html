@@ -1,0 +1,118 @@
+<div class="head_title ">
+    <h1>{{MainTitle}}</h1>
+    <p class="sub_title">{{SubTitle}}</p>
+</div>
+
+<div class="main-content-container" style="700px">
+
+	<div ng-switch="moduleState">
+    <div ng-switch-when="login">
+
+	<!-- FORM TO CREATE TODOS -->
+	<form>		
+		<div class="row row-centered">
+			<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
+		    	<div class="form-group" id="div_name1">
+		  			<label class="control-label requiredField" for="FirstName">
+		       		First Name
+		       			<span class="asteriskField">*</span>
+		      		</label>
+			      	<div class="controls ">
+			       		<input class="form-control" id="GuestFirstName" name="GuestFirstName" type="text" ng-model="formData.GuestFirstName" placeholder="First Name" />
+			      	</div>
+		     	</div>
+		 	</div>
+			<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
+				<div class="form-group" id="div_name">
+		      		<label class="control-label requiredField" for="LastName">
+		       		Last Name
+		       		<span class="asteriskField">*</span>
+		      		</label>
+		      		<div class="controls ">
+		       			<input class="form-control" id="GuestLastName" name="GuestLastName" type="text" ng-model="formData.GuestLastName" placeholder="Last Name"/>
+		      		</div>
+		     	</div>
+		 	</div>
+		</div><!-- end of row -->
+
+		<button type="submit" class="btn btn-primary btn-lg" ng-click="findGuest()">Find</button>
+
+		<button type="submit" class="btn btn-primary btn-lg" ng-click="createGuest()">Add</button>
+	</form>
+</div>
+<div ng-switch-when="details">
+
+	<!-- TODO LIST -->
+	<div id="guest-list" class="row row-centered">
+		<div class="col-xs-12 col-centered col-box-content">
+
+			<!-- LOOP OVER THE TODOS IN $scope.todos -->
+			<form>
+				<!-- <div class="checkbox">
+					<label>
+						 <input type="checkbox" ng-click="deleteGuest(guestData.GuestName)"> {{ guest.GuestName }} 
+					</label>
+				</div> -->
+
+				<div class="controls">Guest Name
+					<input class="form-control" id="GuestName" name="GuestName" type="text" ng-model="guest.GuestName"/>
+				</div>
+
+				<div class="controls">First Name
+					<input class="form-control" id="GuestFirstName" name="GuestFirstName" type="text" ng-model="guest.GuestFirstName"/>
+				</div>
+
+				<div class="controls">Last Name
+					<input class="form-control" id="GuestLastName" name="GuestLastName" type="text" ng-model="guest.GuestName"/>
+				</div>
+
+				<div class="controls">Email
+					<input class="form-control" id="Email" name="Email" type="text" ng-model="guest.Email" />
+				</div>
+
+				<div class="controls">Hotel
+					<input class="form-control" id="HotelName" name="HotelName" type="text" ng-model="guest.HotelName" />
+				</div>
+
+				<div class="controls">Phone
+					<input class="form-control" id="PhoneNumber" name="PhoneNumber" type="text" ng-model="guest.PhoneNumber" />
+				</div>
+
+				<div class="controls">Favorite Song
+					<input class="form-control" id="FavoriteSong" name="FavoriteSong" type="text" ng-model="guest.FavoriteSong" />
+				</div>
+
+				<div class="checkbox">
+					<label class="control-label requiredField" for="RehearsalAttending">Rehearsal</label>
+				 	<input type="checkbox" id="RehearsalAttending" name="RehearsalAttending" ng-model="guest.RehearsalAttending" />
+				</div> 
+
+				<div class="checkbox">
+					<label class="control-label requiredField" for="WeddingAttending">Wedding</label>
+					<input type="checkbox" id="WeddingAttending" name="WeddingAttending" ng-model="guest.WeddingAttending" />
+				</div>
+
+				<div class="checkbox">
+					<label class="control-label requiredField" for="ReceptionAttending">Reception</label>
+				 	<input type="checkbox" id="ReceptionAttending" name="ReceptionAttending" ng-model="guest.ReceptionAttending" />
+				</div> 
+
+			  	<div> {{ guest.Notes }} </div>
+			  	<div> {{ guest.GuestsAllowed }} </div>
+			  	<div> {{ guest.GuestsAttending }} </div>
+			  	<div> {{ guest.Attending }} </div>
+
+	  			<button type="submit" class="btn btn-primary btn-lg" ng-click="updateGuest(guest.GuestName)">Update</button>
+
+		  	</form>
+
+			<p class="text-center" ng-show="loading">
+				<span class="fa fa-spinner fa-spin fa-3x"></span>
+			</p>
+
+		</div>
+	</div>
+</div>
+</div>
+
+</div>

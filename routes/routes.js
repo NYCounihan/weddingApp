@@ -1,8 +1,8 @@
-//var companyDB = require( '../controllers/companyAccess.js' );
+var guestDB = require( '../controllers/guestAccess.js' );
 var express = require('express');
 var routes = express.Router();
 
-var isAuthenticated = function (req, res, next) {
+/*var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
 	// Passport adds this method to request object. A middleware is allowed to add properties to
 	// request and response objects
@@ -10,65 +10,76 @@ var isAuthenticated = function (req, res, next) {
 		return next();
 	// if the user is not authenticated then redirect him to the login page
 	res.redirect('/login');
-}
+}*/
 
 
 // api ---------------------------------------------------------------------
 
-	routes.get('/api/companies', isAuthenticated, function(req, res) {
+var isAuthenticated = true;
+
+	routes.get('/api/guests',  function(req, res) {
 		
-		console.log('routes.js; returning all companies from mongoose function');
+		console.log('routes.js 1.5: returning all guests from mongoose function');
 		
-		companyDB.readAll(function(err, companies){
+		guestDB.readAll(function(err, guests){
 			if (err) {
-			    console.log('error reading company: ' + err);
+			    console.log('error reading guest: ' + err);
 			}
 			else {
-				var arr = JSON.parse(JSON.stringify(companies));
+				var arr = JSON.parse(JSON.stringify(guests));
 				res.json(arr);
 			};
 		});
 	});	
 
-	routes.get('/api/companies/:CompanyName', isAuthenticated, function(req, res) {
-		console.log('express routes.js; returning ' + req.params.CompanyName + ' from mongoose function');
-		companyDB.read(req.params.CompanyName, function(err, companies){
+	routes.get('/api/guests/:GuestName',  function(req, res) {
+		console.log('express routes.js 1.4: returning ' + req.params.GuestName + ' from mongoose function');
+		guestDB.read(req.params.GuestName, function(err, guests){
 			if (err) {
-			    console.log('error reading company: ' + err);
+			    console.log('error reading guest: ' + err);
 			}
 			else {
-				var arr = JSON.parse(JSON.stringify(companies));
+				var arr = JSON.parse(JSON.stringify(guests));
 				res.send(arr);
 			};
 		});
 	});	
 	
-	routes.post('/api/companies/:CompanyName', isAuthenticated, function(req, res) {
-		console.log('routes.js: entered into routes.create');
-		companyDB.create(req.params.CompanyName, 1200, 5000);
+	routes.post('/api/guests/:GuestName',  function(req, res) {
+		console.log('routes.js 1.0: entered into routes.create yy ' + req.params.GuestFirstName + '' + req.params.GuestLastName);
+		guestDB.create(req.body);
 	});
 
 
-	routes.post('/api/companies/', isAuthenticated, function(req, res) {
-		console.log('routes.js: entered into routes.create');
-		companyDB.create(req.params.CompanyName, 1200, 5000);
+	routes.post('/api/guests/',  function(req, res) {
+		console.log('routes.js 1.1: entered into routes.create ' + req.params.GuestFirstName + '' + req.params.GuestLastName);
+		guestDB.create(req.body);
 	});
 	
-	routes.delete('/api/companies/:CompanyName', isAuthenticated, function(req, res) {
+	routes.delete('/api/guests/:GuestName',  function(req, res) {
 		console.log('routes.js: enterd into routes.delete');
-		companyDB.delete(req.params.CompanyName);
+		console.log('delete ' + req.body.GuestName);
+		guestDB.delete(req.params.GuestName);
 	});
 
-	routes.delete('/api/companies/', isAuthenticated, function(req, res) {
+	routes.delete('/api/guests/',  function(req, res) {
 		console.log('routes.js: entered into routes.delete');
-		companyDB.delete(req.params.CompanyName);
+		console.log('delete ' + req.body.GuestName);
+		guestDB.delete(req.params.GuestName);
 	});
 
-	routes.put('/api/companies/:CompanyName', isAuthenticated, function(req, res) {
-		companyDB.update(req.body);
+	routes.put('/api/guests/',  function(req, res) {
+		console.log('routes.js 1.7: entered into routes.update');
+		console.log(req.body);
+		guestDB.update(req.body);
 	});
 
-	//routes.get('/', isAuthenticated, function(req, res) {
+	routes.put('/api/guests/:GuestName',  function(req, res) {
+		console.log('routes.js 1.6: entered into routes.update');
+		guestDB.update(req.body);
+	});
+
+	//routes.get('/',  function(req, res) {
   	routes.get('/', function(req, res) {
   		res.render('index', { title: 'Express' });
 	});
