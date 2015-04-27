@@ -16,11 +16,12 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
 var mongooseUri = uriUtil.formatMongoose(dbURI);
 
 // Create the database connection
-mongoose.connect(mongooseUri);
+mongoose.connect(mongooseUri, {server:{auto_reconnect:true}});
 
 // CONNECTION EVENTS
 // When successfully connected
 console.log('we are in mongoose now');
+
 mongoose.connection.on('connected', function () {
   console.log('Mongoose default connection open to ' + dbURI);
 });
@@ -33,6 +34,7 @@ mongoose.connection.on('error',function (err) {
 // When the connection is disconnected
 mongoose.connection.on('disconnected', function () {
   console.log('Mongoose default connection disconnected');
+  mongoose.connect(mongooseUri, {server:{auto_reconnect:true}});
 });
 
 // If the Node process ends, close the Mongoose connection

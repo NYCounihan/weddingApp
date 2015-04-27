@@ -71,12 +71,27 @@ var isAuthenticated = true;
 	routes.put('/api/guests/',  function(req, res) {
 		console.log('routes.js 1.7: entered into routes.update');
 		console.log(req.body);
-		guestDB.update(req.body);
+		guestDB.update(req.body, function(success){
+			if (success) {
+			    res.send(true);
+			}
+			else {
+				console.log('error updating guest: ' + err);
+			};
+		});
 	});
 
 	routes.put('/api/guests/:GuestName',  function(req, res) {
 		console.log('routes.js 1.6: entered into routes.update');
-		guestDB.update(req.body);
+		console.log(req.body);
+		guestDB.update(req.body, function(success){
+			if (success) {
+			    res.send(true);
+			}
+			else {
+				console.log('error updating guest: ' + err);
+			};
+		});
 	});
 
 	//routes.get('/',  function(req, res) {

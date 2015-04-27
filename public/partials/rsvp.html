@@ -6,101 +6,127 @@
 <div class="main-content-container" style="700px">
 
 	<div ng-switch="moduleState">
+	<div ng-switch-when="loading">
+		<div class="heartbeat">
+	    	Loading...
+		</div>
+	</div>
     <div ng-switch-when="login">
 
-	<!-- FORM TO CREATE TODOS -->
-	<form>		
-		<div class="row row-centered">
-			<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
-		    	<div class="form-group" id="div_name1">
-		  			<label class="control-label requiredField" for="FirstName">
-		       		First Name
-		       			<span class="asteriskField">*</span>
-		      		</label>
-			      	<div class="controls ">
-			       		<input class="form-control" id="GuestFirstName" name="GuestFirstName" type="text" ng-model="formData.GuestFirstName" placeholder="First Name" />
-			      	</div>
-		     	</div>
-		 	</div>
-			<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
-				<div class="form-group" id="div_name">
-		      		<label class="control-label requiredField" for="LastName">
-		       		Last Name
-		       		<span class="asteriskField">*</span>
-		      		</label>
-		      		<div class="controls ">
-		       			<input class="form-control" id="GuestLastName" name="GuestLastName" type="text" ng-model="formData.GuestLastName" placeholder="Last Name"/>
-		      		</div>
-		     	</div>
-		 	</div>
-		</div><!-- end of row -->
+	<!-- LOGIN FORM -->
+		<form>		
+			<div class="row row-centered">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
+			    	<div class="form-group" id="div_name1">
+			  			<label class="control-label requiredField" for="FirstName">
+			       		First Name
+			       			<span class="asteriskField">*</span>
+			      		</label>
+				      	<div class="controls ">
+				       		<input class="form-control" id="GuestFirstName" name="GuestFirstName" type="text" ng-model="formData.GuestFirstName" placeholder="First Name" />
+				      	</div>
+			     	</div>
+			 	</div>
+				<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
+					<div class="form-group" id="div_name">
+			      		<label class="control-label requiredField" for="LastName">
+			       		Last Name
+			       		<span class="asteriskField">*</span>
+			      		</label>
+			      		<div class="controls ">
+			       			<input class="form-control" id="GuestLastName" name="GuestLastName" type="text" ng-model="formData.GuestLastName" placeholder="Last Name"/>
+			      		</div>
+			     	</div>
+			 	</div>
+			</div><!-- end of row -->
 
-		<button type="submit" class="btn btn-primary btn-lg" ng-click="findGuest()">Find</button>
+			<button type="submit" class="btn btn-primary btn-lg" ng-click="findGuest()">Find</button>
+		</form>
+	</div><!-- / LOGIN FORM -->
 
-		<button type="submit" class="btn btn-primary btn-lg" ng-click="createGuest()">Add</button>
-	</form>
-</div>
 <div ng-switch-when="details">
 
-	<!-- TODO LIST -->
-	<div id="guest-list" class="row row-centered">
-		<div class="col-xs-12 col-centered col-box-content">
+			<form class="form-horizontal row-centered">
+				<div class="col-xs-12 col-centered col-full-box-content">
+					<div class="form-group">
+					    <label for="GuestFirstName" class="col-sm-2 control-label">First Name</label>
+						    <div class="col-sm-10">
+						      <input type="GuestFirstName" class="form-control" id="GuestFirstName" ng-model="guest.GuestFirstName">
+						    </div>
+				  	</div>
 
-			<!-- LOOP OVER THE TODOS IN $scope.todos -->
-			<form>
-				<!-- <div class="checkbox">
-					<label>
-						 <input type="checkbox" ng-click="deleteGuest(guestData.GuestName)"> {{ guest.GuestName }} 
-					</label>
-				</div> -->
+				  	<div class="form-group">
+					    <label for="GuestLastName" class="col-sm-2 control-label">Last Name</label>
+						    <div class="col-sm-10">
+						      <input type="GuestLastName" class="form-control" id="GuestLastName" ng-model="guest.GuestLastName">
+						    </div>
+				  	</div>
 
-				<div class="controls">Guest Name
-					<input class="form-control" id="GuestName" name="GuestName" type="text" ng-model="guest.GuestName"/>
-				</div>
+				  	<div class="form-group">
+					    <label for="Email" class="col-sm-2 control-label">Email</label>
+						    <div class="col-sm-10">
+						      <input type="Email" class="form-control" id="Email" ng-model="guest.Email">
+						    </div>
+				  	</div>
 
-				<div class="controls">First Name
-					<input class="form-control" id="GuestFirstName" name="GuestFirstName" type="text" ng-model="guest.GuestFirstName"/>
-				</div>
+			  		<div ng-switch="moduleGuest">
+					<div ng-switch-when="Yes">
+					  	<div class="form-group">
+					  		<label for="Email" class="col-sm-8 control-label">My invitation includes {{guest.GuestsAllowed}} possible guests and I will be bringing : </label>
+							<div class="col-sm-4">
+							  	<select class="form-control">
+									  <option>0 guests</option>
+									  <option>1 guests</option>
+									  <option>2 guests</option>
+									  <option>3 guests</option>
+									  <option>4 guests</option>
+									  <option>5 guests</option>
+								</select>
+							</div>
+						</div>
+					</div><div ng-switch-when="No">
+						<div class="form-group">
+						    <label class="col-xs-12 control-label">Argh! Our venue has a strict limit on the total number of guests, and we unfortunately can't extend an invitation for a plus one. We'll let you know a soon as we can if there's room for additional guests.</label>
+				  		</div>
+					</div>
+					</div>
 
-				<div class="controls">Last Name
-					<input class="form-control" id="GuestLastName" name="GuestLastName" type="text" ng-model="guest.GuestName"/>
-				</div>
 
-				<div class="controls">Email
-					<input class="form-control" id="Email" name="Email" type="text" ng-model="guest.Email" />
-				</div>
+					<div class="form-group">
+						    <label for="Hotel" class="col-sm-2 control-label">Hotel</label>
+						    <div class="col-sm-10">
+						      <input type="Hotel" class="form-control" id="Hotel" ng-model="guest.Hotel">
+						    </div>
+				  	</div>
 
-				<div class="controls">Hotel
-					<input class="form-control" id="HotelName" name="HotelName" type="text" ng-model="guest.HotelName" />
-				</div>
+				  	<div class="form-group">
+						    <label for="Phone" class="col-sm-2 control-label">Phone</label>
+						    <div class="col-sm-10">
+						      <input type="Phone" class="form-control" id="Phone" ng-model="guest.Phone">
+						    </div>
+				  	</div>
 
-				<div class="controls">Phone
-					<input class="form-control" id="PhoneNumber" name="PhoneNumber" type="text" ng-model="guest.PhoneNumber" />
-				</div>
+					<div class="form-group">
+						    <label for="Phone" class="col-sm-2 control-label">Favorite Song</label>
+						    <div class="col-sm-10">
+						      <input type="FavoriteSong" class="form-control" id="FavoriteSong" ng-model="guest.FavoriteSong">
+						    </div>
+				  	</div>
 
-				<div class="controls">Favorite Song
-					<input class="form-control" id="FavoriteSong" name="FavoriteSong" type="text" ng-model="guest.FavoriteSong" />
-				</div>
+					<div class="form-group">
+					  	<label class="checkbox-inline">
+						  <input type="checkbox" id="RehearsalAttending" name="RehearsalAttending" ng-model="guest.RehearsalAttending"> Rehearsal
+						</label>
+						<label class="checkbox-inline">
+						  <input type="checkbox" id="WeddingAttending" name="WeddingAttending" ng-model="guest.WeddingAttending"> Wedding
+						</label>
+						<label class="checkbox-inline">
+						  <input type="checkbox" id="ReceptionAttending" name="ReceptionAttending" ng-model="guest.ReceptionAttending"> Reception
+						</label>
+					</div>
 
-				<div class="checkbox">
-					<label class="control-label requiredField" for="RehearsalAttending">Rehearsal</label>
-				 	<input type="checkbox" id="RehearsalAttending" name="RehearsalAttending" ng-model="guest.RehearsalAttending" />
-				</div> 
-
-				<div class="checkbox">
-					<label class="control-label requiredField" for="WeddingAttending">Wedding</label>
-					<input type="checkbox" id="WeddingAttending" name="WeddingAttending" ng-model="guest.WeddingAttending" />
-				</div>
-
-				<div class="checkbox">
-					<label class="control-label requiredField" for="ReceptionAttending">Reception</label>
-				 	<input type="checkbox" id="ReceptionAttending" name="ReceptionAttending" ng-model="guest.ReceptionAttending" />
-				</div> 
-
-			  	<div> {{ guest.Notes }} </div>
-			  	<div> {{ guest.GuestsAllowed }} </div>
-			  	<div> {{ guest.GuestsAttending }} </div>
-			  	<div> {{ guest.Attending }} </div>
+				  	<div> {{ guest.Notes }} </div>
+				  	<div> {{ guest.Attending }} </div>
 
 	  			<button type="submit" class="btn btn-primary btn-lg" ng-click="updateGuest(guest.GuestName)">Update</button>
 

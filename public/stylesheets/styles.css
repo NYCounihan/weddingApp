@@ -63,6 +63,17 @@ body {
           box-sizing: border-box;
 }
 
+.col-full-box-content {
+     /* custom width */
+    width:700px;
+    /* height: 500px; */
+    vertical-align: top;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 #gmaps {
     width: 345px;
     height: 300px;

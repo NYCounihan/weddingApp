@@ -33,15 +33,15 @@ exports.read = function(strName, cb) {
             console.log('error getting Guest: ' + err);
         }
         else {
+            console.log('in mongoose schema read : ' + guests);
             cb(err, guests);
         }
     });
 }
 
 exports.readAll = function(cb) {
-
     //query with mongoose
-    var query = Guest.find({}).select({GuestName : true, Attending : true, _id : false });
+    var query = Guest.find({}).select();
 
     query.exec(function (err, guests) {
         if (err) {
@@ -62,11 +62,27 @@ exports.delete = function(strName) {
     });
 }
 
-exports.update = function(GuestDetails) {
-    console.log(GuestDetails);
+exports.update = function(GuestDetails, cb) {
+    console.log('mongoose GuestAccess: entered into update in mongoose Guest schema');
+    console.log('updating ' + GuestDetails.GuestName);
 
-    Guest.findOne({'GuestName' : GuestDetails.GuestName}, function(err, doc) {
+    var updates = GuestDetails;
 
+    Guest.findOneAndUpdate({'GuestName' : GuestDetails.GuestName}, updates, function(err) {
+      if (err) {
+          console.log('error updating guest in guestAccess.js : ' + err);
+          cb(err);
+      }
+      else {
+          cb(true);
+      };
+    });
+
+
+      //if (doc == undefined) {console.log('no name found for update'); return;}
+
+     /* doc.GuestName = GuestDetails.GuestFirstName + ' ' + GuestDetails.GuestLastName;
+      doc.GuestFirstName = GuestDetails.GuestFirstName;
       doc.GuestLastName = GuestDetails.GuestLastName;
       doc.Email = GuestDetails.Email;
       doc.HotelName = GuestDetails.HotelName;
@@ -83,6 +99,6 @@ exports.update = function(GuestDetails) {
       doc.save(function(err) {
         console.log(err)});
 
-    });
+    }); */
 
 }
