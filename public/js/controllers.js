@@ -96,7 +96,7 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
                 }
                 else
                 {
-                    console.log(data.guestNames[1].GuestName + " guest name returned to loadGuestDetails");
+                    console.log(data.guestNames[0].GuestName + " guest name returned to loadGuestDetails");
                     $scope.MainTitle = "Welcome";
                     $scope.SubTitle = status; 
                     $scope.guest = data;
