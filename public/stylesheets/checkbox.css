@@ -1,0 +1,94 @@
+
+.task-div {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+.tasks-lists {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -11px;
+  padding: 10px 4px;
+  width: 19px;
+  height: 3px;
+  font: 0/0 serif;
+  text-shadow: none;
+  color: transparent;
+}
+.tasks-lists:before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: #8c959d;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 6px #8c959d, 0 -6px #8c959d;
+  box-shadow: 0 6px #8c959d, 0 -6px #8c959d;
+}
+
+.tasks-list-item {
+  display: block;
+  line-height: 40px;
+  cursor: pointer;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.tasks-list-cb {
+  display: none;
+}
+
+.tasks-list-mark {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 6px;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #8C8C8C;
+  border-radius: 30px;
+}
+
+.tasks-list-mark:before {
+  content: '';
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -6px 0px 0px -7px;
+height: 5px;
+width: 10px;
+    border: solid #EE5B6D;
+    border-width: 0 0 4px 4px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.tasks-list-mark:before, .tasks-list-mark:before {
+  box-sizing: content-box !important;
+}
+
+.tasks-list-desc:before, .tasks-list-desc:before {
+  box-sizing: content-box !important;
+}
+
+.tasks-list-cb:checked ~ .tasks-list-mark {
+  border-color: #EE5B6D;
+}
+.tasks-list-cb:checked ~ .tasks-list-mark:before {
+  display: block;
+}
+
+.tasks-list-desc {
+  font-weight: bold;
+  color: #8C8C8C;
+}
+.tasks-list-cb:checked ~ .tasks-list-desc {
+  color: #EE5B6D;
+}

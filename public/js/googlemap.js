@@ -4,12 +4,12 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 12,
     center: new google.maps.LatLng(40.7414248,-73.9707823),
-     panControl: false,
-zoomControl: true,
-mapTypeControl: false,
-scaleControl: false,
-streetViewControl: false,
-overviewMapControl: false,
+    panControl: false,
+    zoomControl: true,
+    mapTypeControl: false,
+    scaleControl: false,
+    streetViewControl: false,
+    overviewMapControl: false,
 
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: [ { "featureType": "poi.business", "stylers": [ { "visibility": "off" } ] },{ "featureType": "poi.government", "stylers": [ { "visibility": "off" } ] },{ "featureType": "poi.medical", "stylers": [ { "visibility": "off" } ] },{ "featureType": "poi.place_of_worship", "stylers": [ { "visibility": "off" } ] },{ "featureType": "poi.school", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road.highway", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road.arterial", "stylers": [ { "visibility": "simplified" } ] },{ "featureType": "poi", "elementType": "geometry.fill", "stylers": [ { "color": "#ffffff" }, { "visibility": "off" } ] },{ "featureType": "water", "stylers": [ { "color": "#ffffff" } ] },{ "featureType": "administrative", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road" } ]
@@ -69,3 +69,10 @@ overviewMapControl: false,
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+    //this part runs when the mapobject is created and rendered
+    google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+        //this part runs when the mapobject shown for the first time
+    });
+});

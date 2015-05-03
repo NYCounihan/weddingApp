@@ -14,13 +14,12 @@
     <div ng-switch-when="login">
 
 	<!-- LOGIN FORM -->
-		<form>		
-			<div class="row row-centered">
+		<form >
+			<div class="row row-centered">		
 				<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
-			    	<div class="form-group" id="div_name1">
+			    	<div class="form-group">
 			  			<label class="control-label requiredField" for="FirstName">
-			       		First Name
-			       			<span class="asteriskField">*</span>
+			       			First Name <span class="asteriskField">*</span>
 			      		</label>
 				      	<div class="controls ">
 				       		<input class="form-control" id="GuestFirstName" name="GuestFirstName" type="text" ng-model="formData.GuestFirstName" placeholder="First Name" />
@@ -28,117 +27,138 @@
 			     	</div>
 			 	</div>
 				<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
-					<div class="form-group" id="div_name">
+					<div class="form-group">
 			      		<label class="control-label requiredField" for="LastName">
-			       		Last Name
-			       		<span class="asteriskField">*</span>
+			       			Last Name <span class="asteriskField">*</span>
 			      		</label>
 			      		<div class="controls ">
 			       			<input class="form-control" id="GuestLastName" name="GuestLastName" type="text" ng-model="formData.GuestLastName" placeholder="Last Name"/>
 			      		</div>
 			     	</div>
 			 	</div>
-			</div><!-- end of row -->
-
-			<button type="submit" class="btn btn-primary btn-lg" ng-click="findGuest()">Find</button>
+		 	</div>
+		 	<div class="row row-centered">		
+			<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-full-box-content">			 	
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="findGuest()">load invitation</button>
+			</div></div>
 		</form>
 	</div><!-- / LOGIN FORM -->
 
 <div ng-switch-when="details">
 
-			<form class="form-horizontal row-centered">
-				<div class="col-xs-12 col-centered col-full-box-content">
+			<form>
+				<div ng-repeat="guestRow in guest.guestNames">
+				<div  class="row row-centered">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
 					<div class="form-group">
-					    <label for="GuestFirstName" class="col-sm-2 control-label">First Name</label>
-						    <div class="col-sm-10">
-						      <input type="GuestFirstName" class="form-control" id="GuestFirstName" ng-model="guest.GuestFirstName">
+					    <label for="GuestFirstName" class="control-label">{{guestRow.Type}} First Name</label>
+					    <div class="controls">
+					      <input type="GuestFirstName" class="form-control" id="GuestFirstName" ng-model="guestRow.GuestFirstName">
+					    </div>
+				  	</div>
+			  	</div>
+
+			  	<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content">
+				  	<div class="form-group">
+					    <label for="GuestLastName" class="control-label">{{guestRow.Type}} Last Name</label>
+						    <div class="controls">
+						      <input type="GuestLastName" class="form-control" id="GuestLastName" ng-model="guestRow.GuestLastName">
 						    </div>
 				  	</div>
+			  	</div></div>
 
-				  	<div class="form-group">
-					    <label for="GuestLastName" class="col-sm-2 control-label">Last Name</label>
-						    <div class="col-sm-10">
-						      <input type="GuestLastName" class="form-control" id="GuestLastName" ng-model="guest.GuestLastName">
-						    </div>
-				  	</div>
+		  		<div class="row row-centered">
+		  				<div class="col-xs-12 col-centered col-full-box-content">
+		  				<div class="row">			  	
+							<div class="col-xs-6 col-sm-3 task-div">
+								<label class="tasks-list-item" />
+						        <input type="checkbox" id="RehearsalAttending" name="RehearsalAttending" ng-model="guestRow.RehearsalAttending" class="tasks-list-cb" ng-change="attendDetails()">
+						        <span class="tasks-list-mark"></span>
+						        <span class="tasks-list-desc">Friday BBQ</span>
+					        </div>
 
-				  	<div class="form-group">
-					    <label for="Email" class="col-sm-2 control-label">Email</label>
-						    <div class="col-sm-10">
+							<div class="col-xs-6 col-sm-3 task-div">
+								<label class="tasks-list-item" />
+						        <input type="checkbox"  id="WeddingAttending" name="WeddingAttending" ng-model="guestRow.WeddingAttending" class="tasks-list-cb"  ng-change="attendDetails()">
+						        <span class="tasks-list-mark"></span>
+						        <span class="tasks-list-desc">Wedding</span>
+					        </div>
+
+							<div class="col-xs-6 col-sm-3 task-div">
+								<label class="tasks-list-item"/>
+						        <input type="checkbox"  id="ReceptionAttending" name="ReceptionAttending" ng-model="guestRow.ReceptionAttending" class="tasks-list-cb"  ng-change="attendDetails()">
+						        <span class="tasks-list-mark"></span>
+						        <span class="tasks-list-desc" >Reception</span>
+					        </div>
+
+							<div class="col-xs-6 col-sm-3 task-div">
+								<label class="tasks-list-item"/>
+						        <input type="checkbox"  id="NotAttending" name="NotAttending" ng-model="guestRow.NotAttending" class="tasks-list-cb">
+						        <span class="tasks-list-mark"></span>
+						        <span class="tasks-list-desc" >Not Attending</span>
+					        </div>
+				        </div></div>
+    			</div></div> <!-- end guestNames loop -->
+
+    			<div class="form-group row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content form-group">
+
+    			<div ng-show="showAttendDetails">
+		  		<div ng-switch="moduleGuest">
+					<div ng-switch-when="Yes">
+					  		<label for="Email" class="col-sm-8 control-label">My invitation includes {{guest.GuestsAllowed}} possible guests and I will be bringing : </label>
+							<div class="col-sm-4">
+							  	<select class="form-control" ng-repeat="x in guest.GuestsAllowed">
+									  <option>{{x}} guests</option>
+								</select>
+							</div>
+					</div><div ng-switch-when="No">
+						<label>Argh! Our venue has a strict limit on the total number of guests, and we unfortunately can't extend an invitation for a plus one given capacity constraints.</label>
+			  		</div>
+				</div>
+				</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content form-group">
+					    <label for="Email">Email</label>
+						    <div>
 						      <input type="Email" class="form-control" id="Email" ng-model="guest.Email">
 						    </div>
 				  	</div>
 
-			  		<div ng-switch="moduleGuest">
-					<div ng-switch-when="Yes">
-					  	<div class="form-group">
-					  		<label for="Email" class="col-sm-8 control-label">My invitation includes {{guest.GuestsAllowed}} possible guests and I will be bringing : </label>
-							<div class="col-sm-4">
-							  	<select class="form-control">
-									  <option>0 guests</option>
-									  <option>1 guests</option>
-									  <option>2 guests</option>
-									  <option>3 guests</option>
-									  <option>4 guests</option>
-									  <option>5 guests</option>
-								</select>
-							</div>
-						</div>
-					</div><div ng-switch-when="No">
-						<div class="form-group">
-						    <label class="col-xs-12 control-label">Argh! Our venue has a strict limit on the total number of guests, and we unfortunately can't extend an invitation for a plus one. We'll let you know a soon as we can if there's room for additional guests.</label>
-				  		</div>
-					</div>
-					</div>
+					<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content form-group">
+						    <label for="Hotel">Hotel</label>
+						    <div>
+						      <input type="Hotel" class="form-control" id="HotelName" ng-model="guest.HotelName">
+						    </div>
+				  	</div>
+			  	</div>
 
-
-					<div class="form-group">
-						    <label for="Hotel" class="col-sm-2 control-label">Hotel</label>
-						    <div class="col-sm-10">
-						      <input type="Hotel" class="form-control" id="Hotel" ng-model="guest.Hotel">
+			  	<div class="row">
+				  	<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content form-group">
+						    <label for="Phone">Phone</label>
+						    <div>
+						      <input type="Phone" class="form-control" id="PhoneNumber" ng-model="guest.PhoneNumber">
 						    </div>
 				  	</div>
 
-				  	<div class="form-group">
-						    <label for="Phone" class="col-sm-2 control-label">Phone</label>
-						    <div class="col-sm-10">
-						      <input type="Phone" class="form-control" id="Phone" ng-model="guest.Phone">
-						    </div>
-				  	</div>
-
-					<div class="form-group">
-						    <label for="Phone" class="col-sm-2 control-label">Favorite Song</label>
-						    <div class="col-sm-10">
+					<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content form-group">
+						    <label for="Phone">Favorite Song</label>
+						    <div>
 						      <input type="FavoriteSong" class="form-control" id="FavoriteSong" ng-model="guest.FavoriteSong">
 						    </div>
 				  	</div>
+			  	</div>
+			  	</div><!-- / ng-switch when showAttendDetails == yes -->				  
 
-					<div class="form-group">
-					  	<label class="checkbox-inline">
-						  <input type="checkbox" id="RehearsalAttending" name="RehearsalAttending" ng-model="guest.RehearsalAttending"> Rehearsal
-						</label>
-						<label class="checkbox-inline">
-						  <input type="checkbox" id="WeddingAttending" name="WeddingAttending" ng-model="guest.WeddingAttending"> Wedding
-						</label>
-						<label class="checkbox-inline">
-						  <input type="checkbox" id="ReceptionAttending" name="ReceptionAttending" ng-model="guest.ReceptionAttending"> Reception
-						</label>
-					</div>
+		  	<div class="row">
+	  			<button type="submit" class="btn btn-primary btn-lg" ng-click="updateGuest(guest.guestNames[0].GuestName)">{{buttonName}}</button>
+	  		</div>
 
-				  	<div> {{ guest.Notes }} </div>
-				  	<div> {{ guest.Attending }} </div>
+	  	</form>
 
-	  			<button type="submit" class="btn btn-primary btn-lg" ng-click="updateGuest(guest.GuestName)">Update</button>
-
-		  	</form>
-
-			<p class="text-center" ng-show="loading">
-				<span class="fa fa-spinner fa-spin fa-3x"></span>
-			</p>
-
-		</div>
-	</div>
-</div>
-</div>
-
-</div>
+	</div><!-- / ng-switch when ModuleState == details -->
+	</div><!-- / ng-switch ModuleState -->
+</div><!-- / main-content-container -->

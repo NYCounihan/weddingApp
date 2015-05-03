@@ -35,6 +35,7 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
         $scope.MainTitle = "RSVP";
         $scope.SubTitle = "Please RSVP by June 15th";
         $scope.moduleState = "login";
+        $scope.buttonName = "rsvp";
 
 
         // CREATE ==================================================================
@@ -55,6 +56,9 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
         // UPDATE ==================================================================
         $scope.updateGuest = function(id) {
             $scope.moduleState = "loading";
+
+            //updateGuestFullNames();
+
             Guest.update($scope.guest,(function(success){
                 if (success) {
                     loadGuestDetails({ GuestName: id },"Thanks for updating!");
@@ -86,21 +90,50 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
         var loadGuestDetails = function(name, status){
             Guest.query(name,(function(data) {
 
-                if(data.GuestName == undefined){
+                if(data.guestNames == undefined){
                     $scope.moduleState = 'login';
-                    $scope.SubTitle = "Whoops! Unable to find that name.";
+                    $scope.SubTitle = "Whoops! Technical difficulties. Email juliancounihan@gmail.com";
                 }
                 else
                 {
-                    console.log(data.GuestName + " guest name returned to loadGuestDetails");
-                    $scope.MainTitle = "Welcome " + data.GuestFirstName;
+                    console.log(data.guestNames[1].GuestName + " guest name returned to loadGuestDetails");
+                    $scope.MainTitle = "Welcome";
                     $scope.SubTitle = status; 
                     $scope.guest = data;
-                    setGuestForm(data.GuestsAllowed);
+                    fillGuestArray(data.GuestsAllowed);
                     $scope.moduleState = 'details';
                 }
 
             })); 
+        }
+
+        $scope.attendDetails = function(){
+            console.log("entered attendDetails()");
+            console.log($scope.guest.RehearsalAttending);
+            console.log($scope.guest.WeddingAttending);
+            console.log($scope.guest.ReceptionAttending);
+
+            if ($scope.guest.RehearsalAttending || $scope.guest.WeddingAttending || $scope.guest.ReceptionAttending){
+                $scope.showAttendDetails = true;
+            }
+            else{
+                $scope.showAttendDetails = false;
+            }
+
+        }
+
+        var fillGuestArray = function(num) {
+            var guestArray = [];
+            for(var i=0;i<num;i++) {
+              guestArray.push(i);
+            }
+            $scope.guestArray = guestArray;
+        }
+
+        var updateGuestFullNames = function(){
+            for(var i=0; i<$scope.guest.guestNames.length; i++) {
+             $scope.guest.guestNames[i].GuestName = $scope.guest.guestNames[i].GuestFirstName + ' ' + $scope.guest.guestNames[i].GuestLastName;
+            }
         }
 
     }]);

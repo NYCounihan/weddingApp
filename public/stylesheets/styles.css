@@ -13,6 +13,9 @@
   }
 }
 
+.control-label {
+  text-align: left !important;
+}
 
 
 body {
@@ -25,6 +28,17 @@ body {
 /*----------------------------------------------*/
 /* Main Content */
 /*----------------------------------------------*/
+
+.btn {
+  background-color: rgba(102, 102, 102, 1) !important;
+  color: rgba(255, 255, 255, 1) !important;
+  border: 2px solid rgba(71, 71, 71, 1) !important;
+  font-weight: 500;
+  height: 50px;
+  padding: 5px 10px;
+  font-size: 16px;
+  width: 150px;
+}
 
 .hotel-title-description {
   font-style: italic;
@@ -53,8 +67,6 @@ body {
 }
 
 .col-box-content {
-     /* custom width */
-    width:350px;
     /* height: 500px; */
     vertical-align: top;
     overflow: hidden;
@@ -64,8 +76,7 @@ body {
 }
 
 .col-full-box-content {
-     /* custom width */
-    width:700px;
+    
     /* height: 500px; */
     vertical-align: top;
     overflow: hidden;
@@ -328,6 +339,11 @@ body {
 }
 
 @media only screen and (max-width : 768px) {
+    .tasks-list-item{
+      text-align: left;
+      padding-left: 20px;
+    }
+
     .scriptTitle{
         text-align: center;
         height: 90px;
@@ -348,6 +364,21 @@ body {
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
+      .tasks-list-item{
+      text-align: center;
+    }
+
+
+      .col-box-content{
+             /* custom width */
+          width:350px;
+      }
+
+      .col-full-box-content{
+       /* custom width */
+          width:700px;
+      }
+
      .col-sm-height {
         display: table-cell;
         float: none !important;
@@ -407,7 +438,6 @@ body {
 
   
 }
-
 
 
 
