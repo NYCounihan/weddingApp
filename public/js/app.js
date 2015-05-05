@@ -32,7 +32,7 @@ weddingApp.config(['$routeProvider', '$locationProvider',
         controller: 'HotelsCtrl'
       }).
       when('/travel', {
-        templateUrl: 'partials/blank.html',
+        templateUrl: 'partials/travel.html',
         controller: 'TravelCtrl'
       }).
       when('/tips', {

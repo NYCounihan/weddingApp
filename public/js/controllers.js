@@ -20,7 +20,7 @@ weddingControllers.controller('HotelsCtrl',  function($scope) {
 }); 
 
 weddingControllers.controller('TravelCtrl',  function($scope) {
-    $scope.MainTitle = "Travel :: please check back soon for updates";
+    $scope.MainTitle = "Travel";
     $scope.SubTitle = "Getting here & around while you're here";
 }); 
 
