@@ -13,6 +13,7 @@ var companyServices = angular.module('weddingService', ['ngResource']);
       		'index':    { method: 'GET', isArray: true },
           //'query':    { method: 'GET', params:{CompanyName:'@CompanyName'}, transformResponse: function (data) {return { list : angular.fromJson(data) } }, isArray: true},
           'query':    { method: 'GET', params:{GuestName:'@GuestName'}},
+          'queryAll':    { method: 'GET', isArray: true},
       		'update':   { method: 'PUT' },
       		'delete':   { method: 'DELETE', params:{GuestName:'@GuestName'}, isArray: false}
     		}

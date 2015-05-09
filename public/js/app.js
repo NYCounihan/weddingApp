@@ -39,6 +39,10 @@ weddingApp.config(['$routeProvider', '$locationProvider',
         templateUrl: 'partials/blank.html',
         controller: 'TipsCtrl'
       }).
+      when('/admin', {
+        templateUrl: 'partials/admin.html',
+        controller: 'AdminCtrl'
+      }).
       when('/', {
         templateUrl: 'partials/schedule.html',
         controller: 'ScheduleCtrl'

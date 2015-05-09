@@ -1,0 +1,27 @@
+<div class="head_title ">
+    <h1>{{MainTitle}}</h1>
+    <p class="sub_title">{{SubTitle}}</p>
+</div>
+
+<div class="main-content-container" style="700px">
+	<div class="row row-centered">		
+			<div class="col-sm-12 col-centered col-full-box-content">
+	       		<div class="col-sm-6" style="text-align:left">Name</div>
+     			<div class="col-sm-2">Wedding: </div>
+     			<div class="col-sm-2">Rehearsal: </div>
+     			<div class="col-sm-2">Reception:</div>
+	  		</div>
+  	</div>
+	<div ng-repeat="guestRow in guest">
+		<div ng-repeat="guestRowIndividual in guestRow.guestNames">
+		<div class="row row-centered">		
+			<div class="col-sm-12 col-centered col-full-box-content">
+	       		<div class="col-sm-6" style="text-align:left">{{guestRowIndividual.GuestFirstName}} {{guestRowIndividual.GuestLastName}}</div>
+     			<div class="col-sm-2">{{guestRowIndividual.WeddingAttending}}</div>
+     			<div class="col-sm-2">{{guestRowIndividual.RehearsalAttending}}</div>
+     			<div class="col-sm-2">{{guestRowIndividual.ReceptionAttending}}</div>
+	  		</div>
+	  	</div>
+	  	</div>
+	</div>
+</div><!-- / main-content-container -->

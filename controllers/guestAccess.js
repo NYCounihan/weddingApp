@@ -70,9 +70,11 @@ exports.update = function(GuestDetails, cb) {
       updates.guestNames[i].GuestName = updates.guestNames[i].GuestFirstName + " " + updates.guestNames[i].GuestLastName;
     }
 
+    updates.updated = true;
+
     console.log(updates);
 
-    Guest.findOneAndUpdate({'guestNames.GuestName' : GuestDetails.guestNames[0].GuestName}, updates, function(err) {
+    Guest.findOneAndUpdate({'_id' : GuestDetails._id}, updates, function(err) {
       if (err) {
           console.log('error updating guest in guestAccess.js : ' + err);
           cb(err);

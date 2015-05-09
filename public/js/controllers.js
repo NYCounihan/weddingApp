@@ -58,6 +58,7 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
             $scope.moduleState = "loading";
 
             //updateGuestFullNames();
+            id = $scope.guest.GuestNames[0].GuestFirstName + " " + $scope.guest.GuestNames[0].GuestLastName;
 
             Guest.update($scope.guest,(function(success){
                 if (success) {
@@ -135,5 +136,87 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
              $scope.guest.guestNames[i].GuestName = $scope.guest.guestNames[i].GuestFirstName + ' ' + $scope.guest.guestNames[i].GuestLastName;
             }
         }
+
+    }]);
+
+weddingControllers.controller('AdminCtrl', ['$scope','$http','Guest', function($scope, $http, Guest) {
+        
+        $scope.formData = {};
+        $scope.MainTitle = "RSVP";
+        $scope.SubTitle = "Please RSVP by June 15th";
+        $scope.moduleState = "login";
+        $scope.buttonName = "rsvp";
+
+        // CREATE ==================================================================
+        $scope.createGuest = function() {
+            $scope.moduleState = "loading";
+            var id = $scope.formData.GuestFirstName + ' ' + $scope.formData.GuestLastName;
+            Guest.create($scope.formData);
+            loadGuestDetails(id, "Please fill out the info below. See you soon!");
+        };
+
+        // FIND GUEST ==================================================================
+        $scope.findGuest = function() {
+            $scope.moduleState = "loading";
+            var id = $scope.formData.GuestFirstName + ' ' + $scope.formData.GuestLastName;
+            loadGuestDetails({ GuestName: id }, "Please fill out the info below. See you soon!");
+        };
+
+        // UPDATE ==================================================================
+        $scope.updateGuest = function(id) {
+            $scope.moduleState = "loading";
+
+            //updateGuestFullNames();
+
+            Guest.update($scope.guest,(function(success){
+                if (success) {
+                    loadGuestDetails({ GuestName: id },"Thanks for updating!");
+                }
+                else {
+                    $scope.SubTitle = "Unable to update. Please try again";
+                };
+               
+            }));
+        };
+
+        // DELETE ==================================================================
+        $scope.deleteGuest = function(id) {
+            $scope.moduleState = "loading";
+            Guest.delete({ GuestName: id });  
+            $scope.moduleState = "login";
+        };
+
+        var loadAllGuestDetails = function(){
+            Guest.queryAll((function(data) {
+
+                if(data == undefined){
+                    $scope.moduleState = 'login';
+                    $scope.SubTitle = "Whoops! Technical difficulties. Email juliancounihan@gmail.com";
+                }
+                else
+                {
+                    $scope.MainTitle = "Welcome";
+                    $scope.guest = data;
+                    $scope.moduleState = 'details';
+                }
+
+            })); 
+        }
+
+        var fillGuestArray = function(num) {
+            var guestArray = [];
+            for(var i=0;i<num;i++) {
+              guestArray.push(i);
+            }
+            $scope.guestArray = guestArray;
+        }
+
+        var updateGuestFullNames = function(){
+            for(var i=0; i<$scope.guest.guestNames.length; i++) {
+             $scope.guest.guestNames[i].GuestName = $scope.guest.guestNames[i].GuestFirstName + ' ' + $scope.guest.guestNames[i].GuestLastName;
+            }
+        }
+
+        loadAllGuestDetails();
 
     }]);
