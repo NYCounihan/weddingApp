@@ -105,11 +105,13 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
 
     }]);
 
-weddingControllers.controller('AdminCtrl', ['$scope','$http','Guest', function($scope, $http, Guest) {
+weddingControllers.controller('AdminCtrl', ['$scope', '$route', '$http','Guest', function($scope, $route, $http, Guest) {
         
         $scope.formData = {};
         $scope.MainTitle = "Admin";
         $scope.SubTitle = "Emily is the best";
+        $scope.flattenData = false;
+        if($route.current.flattenData == "true"){$scope.flattenData = true;}
 
         // CREATE ==================================================================
         $scope.createGuest = function(newRow) {
@@ -171,6 +173,8 @@ weddingControllers.controller('AdminCtrl', ['$scope','$http','Guest', function($
         }
 
         var loadAllGuestDetails = function(){
+            $scope.moduleState = "loading";
+
             Guest.queryAll((function(data) {
 
                 if(data == undefined){
@@ -178,17 +182,54 @@ weddingControllers.controller('AdminCtrl', ['$scope','$http','Guest', function($
                 }
                 else
                 {
+                 
+                    if ($scope.flattenData){
+                        console.log('flattening data');
+                        data = flattenArray(data);
+                        console.log(data);
+                    }
+
                     $scope.guest = data;
+                    $scope.moduleState = "ready";
                 }
 
             })); 
         }
 
-        var updateGuestFullNames = function(){
-            for(var i=0; i<$scope.guest.guestNames.length; i++) {
-             $scope.guest.guestNames[i].GuestName = $scope.guest.guestNames[i].GuestFirstName + ' ' + $scope.guest.guestNames[i].GuestLastName;
+       var flattenArray = function(array){
+            var newArray = [];
+            var numRehearsal = 0;
+            var numReception = 0;
+            var numWedding = 0;
+            var numNotAttending = 0;
+            var numPeople = 0;
+
+            for(var i=0;i<array.length;i++){
+
+                var arrayRow = [];
+                arrayRow = array[i];
+
+                arrayRow.guestNames.forEach(function(guest){
+                    newArray.push(guest);
+
+                    guest.RehearsalAttending == true ? numRehearsal++ : "";
+                    guest.ReceptionAttending == true ? numReception++ : "";
+                    guest.WeddingAttending == true ? numWedding++ : "";
+                    guest.NotAttending == true ? numNotAttending++ : "";
+                    numPeople++;
+                });
             }
-        }
+
+            $scope.numRehearsal = numRehearsal;
+            $scope.numReception = numReception;
+            $scope.numWedding = numWedding;
+            $scope.numNotAttending = numNotAttending;
+            $scope.numAttending = Math.max(numRehearsal,numReception,numWedding);
+            $scope.numPeople = numPeople;
+
+            return newArray;
+
+       }
 
         loadAllGuestDetails();
 

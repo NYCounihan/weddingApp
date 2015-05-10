@@ -4,29 +4,85 @@
 </div>
 
 <div class="main-content-container" style="700px">
-	<table class="col-sm-12 col-centered col-full-box-content" style="font-size: 10px;">
+
+	<div ng-switch="moduleState">
+	<div ng-switch-when="loading">
+		<div class="heartbeat">
+	    	Loading...
+		</div>
+	</div>
+    <div ng-switch-when="ready">
+
+	<table class="table col-sm-12 col-centered col-full-box-content" style="font-size: 10px;">
 		<TBODY>		
 			
-			<THEAD>
-	       		<TH style="col-sm-3">First Name</TH>
-	       		<TH class="col-sm-3">Last Name</TH>
-	 			<TH class="col-sm-2">Wedding</TH>
-	 			<TH class="col-sm-2">Rehearsal</TH>
-	 			<TH class="col-sm-2">Reception</TH>
+			<THEAD class="text-align: center">
+	       		<TH class="col-sm-2">
+	       			<a href="#" ng-click="sortType = 'GuestName'; sortReverse = !sortReverse">
+            		Guest Name 
+            		<span ng-show="sortType == 'GuestName' && !sortReverse" class="fa fa-caret-down"></span>
+        			<span ng-show="sortType == 'GuestName' && sortReverse" class="fa fa-caret-up"></span>
+        			</a>
+	       		</TH>
+	 			<TH class="col-sm-2">
+	       			<a href="#" ng-click="sortType = 'WeddingAttending'; sortReverse = !sortReverse">
+            		Wedding
+            		<span ng-show="sortType == 'WeddingAttending' && !sortReverse" class="fa fa-caret-down"></span>
+        			<span ng-show="sortType == 'WeddingAttending' && sortReverse" class="fa fa-caret-up"></span>
+        			</a>
+	       		</TH>
+	 			<TH class="col-sm-2">
+	       			<a href="#" ng-click="sortType = 'RehearsalAttending'; sortReverse = !sortReverse">
+            		Rehearsal
+            		<span ng-show="sortType == 'RehearsalAttending' && !sortReverse" class="fa fa-caret-down"></span>
+        			<span ng-show="sortType == 'RehearsalAttending' && sortReverse" class="fa fa-caret-up"></span>
+        			</a>
+	       		</TH>
+	 			<TH style="col-sm-2">
+	       			<a href="#" ng-click="sortType = 'ReceptionAttending'; sortReverse = !sortReverse">
+            		Reception
+            		<span ng-show="sortType == 'ReceptionAttending' && !sortReverse" class="fa fa-caret-down"></span>
+        			<span ng-show="sortType == 'ReceptionAttending' && sortReverse" class="fa fa-caret-up"></span>
+        			</a>
+	       		</TH>
+	       		<TH class="col-sm-2">
+	       			<a href="#" ng-click="sortType = 'NotAttending'; sortReverse = !sortReverse">
+            		Not Attending
+            		<span ng-show="sortType == 'NotAttending' && !sortReverse" class="fa fa-caret-down"></span>
+        			<span ng-show="sortType == 'NotAttending' && sortReverse" class="fa fa-caret-up"></span>
+        			</a>
+	       		</TH>
+	 			<TH class="col-sm-2">
+	       			<a href="#" ng-click="sortType = 'Updated'; sortReverse = !sortReverse">
+            		Updated
+            		<span ng-show="sortType == 'Updated' && !sortReverse" class="fa fa-caret-down"></span>
+        			<span ng-show="sortType == 'Updated' && sortReverse" class="fa fa-caret-up"></span>
+        			</a>
+	       		</TH>
 	  		</THEAD>
 
-			<TBODY ng-repeat="guestRow in guest">
-				
-			<TR ng-repeat="last in guestRow.guestNames">		
-	       		<TD class="col-sm-3">{{last.GuestFirstName}}</TD>
-	       		<TD class="col-sm-3">{{last.GuestLastName}}</TD>
-	 			<TD class="col-sm-2">{{last.WeddingAttending}}</TD>
-	 			<TD class="col-sm-2">{{last.RehearsalAttending}}</TD>
-	 			<TD class="col-sm-2">{{last.ReceptionAttending}}</TD>
+	  		<TR>
+	       		<TD class="col-sm-2">{{numPeople}}</TD>
+	 			<TD class="col-sm-2">{{numWedding}}</TD>
+	 			<TD class="col-sm-2">{{numRehearsal}}</TD>
+	 			<TD class="col-sm-2">{{numReception}}</TD>
+	 			<TD class="col-sm-2">{{numAttending}}</TD>
+	 			<TD class="col-sm-2">{{numNotAttending}}</TD>
 	 		</TR>
 
-	 		</TBODY>
+			<TR ng-repeat="guestRow in guest | orderBy:sortType:sortReverse ">
+	       		<TD class="col-sm-2" style="text-align: left">{{guestRow.GuestName}}</TD>
+	 			<TD class="col-sm-2">{{guestRow.WeddingAttending}}</TD>
+	 			<TD class="col-sm-2">{{guestRow.RehearsalAttending}}</TD>
+	 			<TD class="col-sm-2">{{guestRow.ReceptionAttending}}</TD>
+	 			<TD class="col-sm-2">{{guestRow.NotAttending}}</TD>
+	 			<TD class="col-sm-2">{{guestRow.Updated}}</TD>
+	 		</TR>
 
  		</TBODY>
 	</table>
+</div><!-- / module-state --> 
 </div><!-- / main-content-container -->
+
+		
+

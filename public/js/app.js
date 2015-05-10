@@ -45,7 +45,8 @@ weddingApp.config(['$routeProvider', '$locationProvider',
       }).
       when('/admintable', {
         templateUrl: 'partials/admintable.html',
-        controller: 'AdminCtrl'
+        controller: 'AdminCtrl',
+        flattenData: 'true'
       }).
       when('/', {
         templateUrl: 'partials/schedule.html',
