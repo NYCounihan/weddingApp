@@ -58,7 +58,7 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
             $scope.moduleState = "loading";
 
             //updateGuestFullNames();
-            id = $scope.guest.GuestNames[0].GuestFirstName + " " + $scope.guest.GuestNames[0].GuestLastName;
+            id = $scope.guest.guestNames[0].GuestFirstName + " " + $scope.guest.guestNames[0].GuestLastName;
 
             Guest.update($scope.guest,(function(success){
                 if (success) {
@@ -78,16 +78,6 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
             $scope.moduleState = "login";
         };
 
-        var setGuestForm = function(number) {
-            if (number > 0) {
-                $scope.moduleGuest = "Yes";
-            }
-            else{
-                $scope.moduleGuest = "No";
-            }
-
-        }
-
         var loadGuestDetails = function(name, status){
             Guest.query(name,(function(data) {
 
@@ -101,7 +91,6 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
                     $scope.MainTitle = "Welcome";
                     $scope.SubTitle = status; 
                     $scope.guest = data;
-                    fillGuestArray(data.GuestsAllowed);
                     $scope.moduleState = 'details';
                 }
 
@@ -121,14 +110,6 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
                 $scope.showAttendDetails = false;
             }
 
-        }
-
-        var fillGuestArray = function(num) {
-            var guestArray = [];
-            for(var i=0;i<num;i++) {
-              guestArray.push(i);
-            }
-            $scope.guestArray = guestArray;
         }
 
         var updateGuestFullNames = function(){
@@ -201,14 +182,6 @@ weddingControllers.controller('AdminCtrl', ['$scope','$http','Guest', function($
                 }
 
             })); 
-        }
-
-        var fillGuestArray = function(num) {
-            var guestArray = [];
-            for(var i=0;i<num;i++) {
-              guestArray.push(i);
-            }
-            $scope.guestArray = guestArray;
         }
 
         var updateGuestFullNames = function(){

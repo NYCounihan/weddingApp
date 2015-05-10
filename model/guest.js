@@ -20,4 +20,5 @@ module.exports = mongoose.model('Guest', {
   Notes : {type : String, default: ''},
   GuestsAllowed : {type : Number, default: ''},
   GuestsAttending : {type : Number, default: ''},
+  Updated : {type : Boolean, default: false}
 });
