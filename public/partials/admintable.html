@@ -1,0 +1,32 @@
+<div class="head_title ">
+    <h1>{{MainTitle}}</h1>
+    <p class="sub_title">{{SubTitle}}</p>
+</div>
+
+<div class="main-content-container" style="700px">
+	<table class="col-sm-12 col-centered col-full-box-content" style="font-size: 10px;">
+		<TBODY>		
+			
+			<THEAD>
+	       		<TH style="col-sm-3">First Name</TH>
+	       		<TH class="col-sm-3">Last Name</TH>
+	 			<TH class="col-sm-2">Wedding</TH>
+	 			<TH class="col-sm-2">Rehearsal</TH>
+	 			<TH class="col-sm-2">Reception</TH>
+	  		</THEAD>
+
+			<TBODY ng-repeat="guestRow in guest">
+				
+			<TR ng-repeat="last in guestRow.guestNames">		
+	       		<TD class="col-sm-3">{{last.GuestFirstName}}</TD>
+	       		<TD class="col-sm-3">{{last.GuestLastName}}</TD>
+	 			<TD class="col-sm-2">{{last.WeddingAttending}}</TD>
+	 			<TD class="col-sm-2">{{last.RehearsalAttending}}</TD>
+	 			<TD class="col-sm-2">{{last.ReceptionAttending}}</TD>
+	 		</TR>
+
+	 		</TBODY>
+
+ 		</TBODY>
+	</table>
+</div><!-- / main-content-container -->
