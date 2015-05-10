@@ -4,24 +4,49 @@
 </div>
 
 <div class="main-content-container" style="700px">
+
+	<form>
+		<div class="row row-centered">		
+			<div class="col-sm-12 col-centered col-full-box-content">
+	       		<input class="col-sm-3" ng-model="formData.GuestFirstName">
+	       		<input class="col-sm-3" ng-model="formData.GuestLastName">
+	       		<button class="col-sm-6" type="button" ng-click="createGuest(formData)">add new</button>
+ 			</div>
+ 		</div>
+ 	</form>
+
+ 	<br>
+
 	<div class="row row-centered">		
 			<div class="col-sm-12 col-centered col-full-box-content">
-	       		<div class="col-sm-6" style="text-align:left">Name</div>
+	       		<div class="col-sm-3" style="text-align:left">First Name</div>
+	       		<div class="col-sm-3" style="text-align:left">Last Name</div>
      			<div class="col-sm-2">Wedding: </div>
      			<div class="col-sm-2">Rehearsal: </div>
      			<div class="col-sm-2">Reception:</div>
 	  		</div>
   	</div>
-	<div ng-repeat="guestRow in guest">
-		<div ng-repeat="guestRowIndividual in guestRow.guestNames">
-		<div class="row row-centered">		
+
+	<form><div ng-repeat="guestRow in guest" class="form-group">
+	
+		<div class="row row-centered" ng-repeat="guestName in guestRow.guestNames">		
 			<div class="col-sm-12 col-centered col-full-box-content">
-	       		<div class="col-sm-6" style="text-align:left">{{guestRowIndividual.GuestFirstName}} {{guestRowIndividual.GuestLastName}}</div>
-     			<div class="col-sm-2">{{guestRowIndividual.WeddingAttending}}</div>
-     			<div class="col-sm-2">{{guestRowIndividual.RehearsalAttending}}</div>
-     			<div class="col-sm-2">{{guestRowIndividual.ReceptionAttending}}</div>
-	  		</div>
-	  	</div>
-	  	</div>
-	</div>
+	       		<input class="col-sm-3" ng-model="guestName.GuestFirstName">
+	       		<input class="col-sm-3" ng-model="guestName.GuestLastName">
+     			<input type="checkbox" class="col-sm-2" ng-model="guestName.WeddingAttending">
+     			<input type="checkbox" class="col-sm-2" ng-model="guestName.RehearsalAttending">
+     			<input type="checkbox" class="col-sm-2" ng-model="guestName.ReceptionAttending">
+ 			</div>
+ 		</div>
+
+  		<div class="row row-centered">		
+			<div class="col-sm-12 col-centered col-full-box-content" style="text-align: left">
+				<button type="button" ng-click="deleteGuest(guestRow.guestNames[0].GuestName)">delete all</button>
+				<button type="button" ng-click="deleteLastGuest(guestRow)">delete last</button>
+				<button type="button" ng-click="updateGuest(guestRow)">update</button>
+				<button type="button" ng-click="addGuest(guestRow)">add guest</button>
+			</div>
+		</div>
+
+  	</div></form>
 </div><!-- / main-content-container -->

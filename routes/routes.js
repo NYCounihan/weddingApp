@@ -46,14 +46,27 @@ var isAuthenticated = true;
 	});	
 	
 	routes.post('/api/guests/:GuestName',  function(req, res) {
-		console.log('routes.js 1.0: entered into routes.create yy ' + req.params.GuestFirstName + '' + req.params.GuestLastName);
-		guestDB.create(req.body);
+		console.log('routes.js 1.0: entered into routes.create');
+		guestDB.create(req.body, function(success){
+			if (success) {
+			    res.send(true);
+			}
+			else {
+				console.log('error updating guest');
+			};
+		});
 	});
 
-
 	routes.post('/api/guests/',  function(req, res) {
-		console.log('routes.js 1.1: entered into routes.create ' + req.params.GuestFirstName + '' + req.params.GuestLastName);
-		guestDB.create(req.body);
+		console.log('routes.js 1.1: entered into routes.create');
+		guestDB.create(req.body, (function(success){
+			if (success) {
+			    res.send(true);
+			}
+			else {
+				console.log('error updating guest');
+			};
+		}));
 	});
 	
 	routes.delete('/api/guests/:GuestName',  function(req, res) {
@@ -64,7 +77,7 @@ var isAuthenticated = true;
 
 	routes.delete('/api/guests/',  function(req, res) {
 		console.log('routes.js: entered into routes.delete');
-		console.log('delete ' + req.body.GuestName);
+		console.log('delete ' + req.params.GuestName);
 		guestDB.delete(req.params.GuestName);
 	});
 

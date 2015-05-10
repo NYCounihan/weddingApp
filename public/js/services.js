@@ -9,7 +9,7 @@ var companyServices = angular.module('weddingService', ['ngResource']);
   		return $resource("/api/guests/:GuestName", { GuestName : "@GuestName" },
 	    	{
       		//'create':   { method: 'POST', params:{GuestName:'@GuestName'}},
-          'create':   { method: 'POST', isArray: true},
+          'create':   { method: 'POST', isArray: false},
       		'index':    { method: 'GET', isArray: true },
           //'query':    { method: 'GET', params:{CompanyName:'@CompanyName'}, transformResponse: function (data) {return { list : angular.fromJson(data) } }, isArray: true},
           'query':    { method: 'GET', params:{GuestName:'@GuestName'}},

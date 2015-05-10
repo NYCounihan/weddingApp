@@ -30,21 +30,12 @@ weddingControllers.controller('TipsCtrl',  function($scope) {
 }); 
 
 weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($scope, $http, Guest) {
-        
         $scope.formData = {};
         $scope.MainTitle = "RSVP";
         $scope.SubTitle = "Please RSVP by June 15th";
         $scope.moduleState = "login";
         $scope.buttonName = "rsvp";
 
-
-        // CREATE ==================================================================
-        $scope.createGuest = function() {
-            $scope.moduleState = "loading";
-            var id = $scope.formData.GuestFirstName + ' ' + $scope.formData.GuestLastName;
-            Guest.create($scope.formData);
-            loadGuestDetails(id, "Please fill out the info below. See you soon!");
-        };
 
         // FIND GUEST ==================================================================
         $scope.findGuest = function() {
@@ -71,12 +62,6 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
             }));
         };
 
-        // DELETE ==================================================================
-        $scope.deleteGuest = function(id) {
-            $scope.moduleState = "loading";
-            Guest.delete({ GuestName: id });  
-            $scope.moduleState = "login";
-        };
 
         var loadGuestDetails = function(name, status){
             Guest.query(name,(function(data) {
@@ -123,17 +108,25 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
 weddingControllers.controller('AdminCtrl', ['$scope','$http','Guest', function($scope, $http, Guest) {
         
         $scope.formData = {};
-        $scope.MainTitle = "RSVP";
-        $scope.SubTitle = "Please RSVP by June 15th";
-        $scope.moduleState = "login";
-        $scope.buttonName = "rsvp";
+        $scope.MainTitle = "Admin";
+        $scope.SubTitle = "Emily is the best";
 
         // CREATE ==================================================================
-        $scope.createGuest = function() {
-            $scope.moduleState = "loading";
-            var id = $scope.formData.GuestFirstName + ' ' + $scope.formData.GuestLastName;
-            Guest.create($scope.formData);
-            loadGuestDetails(id, "Please fill out the info below. See you soon!");
+        $scope.createGuest = function(newRow) {
+
+            $scope.formData = {};
+
+            Guest.create(newRow, (function(success){
+                if (success) {
+                    $scope.SubTitle = newRow.GuestFirstName + " added";
+                    loadAllGuestDetails();
+                }
+                else {
+                    $scope.MainTitle = "Admin";
+                    $scope.SubTitle = "Unable to update. Please try again";
+                    loadAllGuestDetails();
+                }
+            }));
         };
 
         // FIND GUEST ==================================================================
@@ -144,17 +137,15 @@ weddingControllers.controller('AdminCtrl', ['$scope','$http','Guest', function($
         };
 
         // UPDATE ==================================================================
-        $scope.updateGuest = function(id) {
-            $scope.moduleState = "loading";
+        $scope.updateGuest = function(guestRow) {
 
-            //updateGuestFullNames();
-
-            Guest.update($scope.guest,(function(success){
+            Guest.update(guestRow,(function(success){
                 if (success) {
-                    loadGuestDetails({ GuestName: id },"Thanks for updating!");
+                    loadAllGuestDetails();
                 }
                 else {
                     $scope.SubTitle = "Unable to update. Please try again";
+                    loadAllGuestDetails();
                 };
                
             }));
@@ -162,23 +153,32 @@ weddingControllers.controller('AdminCtrl', ['$scope','$http','Guest', function($
 
         // DELETE ==================================================================
         $scope.deleteGuest = function(id) {
-            $scope.moduleState = "loading";
-            Guest.delete({ GuestName: id });  
-            $scope.moduleState = "login";
+            Guest.delete({ GuestName: id });
+            console.log('in controller about to delete ' + id);
+            loadAllGuestDetails();  
         };
+
+        // DELETE LAST GUEST =======================================================
+        $scope.deleteLastGuest = function(guestRow) {
+            guestRow.guestNames.pop();
+            $scope.updateGuest(guestRow);  
+        };
+
+        $scope.addGuest = function(guestRow){
+            var obj = {GuestFirstName:"", GuestLastName:""};
+            guestRow.guestNames.push(obj);
+            $scope.updateGuest(guestRow);
+        }
 
         var loadAllGuestDetails = function(){
             Guest.queryAll((function(data) {
 
                 if(data == undefined){
-                    $scope.moduleState = 'login';
-                    $scope.SubTitle = "Whoops! Technical difficulties. Email juliancounihan@gmail.com";
+                    console.log("error : could not load guests");
                 }
                 else
                 {
-                    $scope.MainTitle = "Welcome";
                     $scope.guest = data;
-                    $scope.moduleState = 'details';
                 }
 
             })); 
