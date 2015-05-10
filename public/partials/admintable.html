@@ -17,6 +17,30 @@
 		<TBODY>		
 			
 			<THEAD class="text-align: center">
+	       		<TH class="col-sm-2">Number Invited</TH>
+	       		<TH class="col-sm-2"># Attending Wedding</TH>
+	       		<TH class="col-sm-2"># Attending Rehearsal</TH>
+	       		<TH class="col-sm-2"># Attending Reception</TH>
+	       		<TH class="col-sm-2"># Attending Total</TH>
+	       		<TH class="col-sm-2"># Not Attending</TH>
+       		</THEAD>
+
+	  		<TR>
+	       		<TD class="col-sm-2">{{numPeople}}</TD>
+	 			<TD class="col-sm-2">{{numWedding}}</TD>
+	 			<TD class="col-sm-2">{{numRehearsal}}</TD>
+	 			<TD class="col-sm-2">{{numReception}}</TD>
+	 			<TD class="col-sm-2">{{numAttending}}</TD>
+	 			<TD class="col-sm-2">{{numNotAttending}}</TD>
+	 		</TR>
+
+ 		</TBODY>
+	</table>
+
+	<table class="table col-sm-12 col-centered col-full-box-content" style="font-size: 10px;">
+		<TBODY>		
+			
+			<THEAD class="text-align: center">
 	       		<TH class="col-sm-2">
 	       			<a href="#" ng-click="sortType = 'GuestName'; sortReverse = !sortReverse">
             		Guest Name 
@@ -61,14 +85,6 @@
 	       		</TH>
 	  		</THEAD>
 
-	  		<TR>
-	       		<TD class="col-sm-2">{{numPeople}}</TD>
-	 			<TD class="col-sm-2">{{numWedding}}</TD>
-	 			<TD class="col-sm-2">{{numRehearsal}}</TD>
-	 			<TD class="col-sm-2">{{numReception}}</TD>
-	 			<TD class="col-sm-2">{{numAttending}}</TD>
-	 			<TD class="col-sm-2">{{numNotAttending}}</TD>
-	 		</TR>
 
 			<TR ng-repeat="guestRow in guest | orderBy:sortType:sortReverse ">
 	       		<TD class="col-sm-2" style="text-align: left">{{guestRow.GuestName}}</TD>

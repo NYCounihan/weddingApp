@@ -210,7 +210,14 @@ weddingControllers.controller('AdminCtrl', ['$scope', '$route', '$http','Guest',
                 arrayRow = array[i];
 
                 arrayRow.guestNames.forEach(function(guest){
+                    if(guest.GuestName == "" || guest.GuestName == " " || guest.GuestName == null){
+                        guest.GuestName = "Guest of " + newArray[newArray.length - 1].GuestName;
+                    }
+
+                    console.log('name is :' + guest.GuestName + "</end name>");
+
                     newArray.push(guest);
+
 
                     guest.RehearsalAttending == true ? numRehearsal++ : "";
                     guest.ReceptionAttending == true ? numReception++ : "";
