@@ -14,13 +14,6 @@ var express = require('express')
     var multer = require('multer');
     var errorHandler = require('errorhandler');
 
-// Configuring Passport ==================================================================
-    var passport = require('passport');
-    var expressSession = require('express-session');
-    app.use(expressSession({resave: true, saveUninitialized: true, secret: 'uwotm8' }));
-    app.use(passport.initialize());
-    app.use(passport.session());
-
 // configuration ==================================================================
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views'); //deliver dynamic template files
@@ -40,12 +33,6 @@ var express = require('express')
     app.use(multer());
 
     app.use(express.static(path.join(__dirname, 'public'))); //deliver things like images and such
-
-// passport ======================================================================
-    var flash = require('connect-flash');
-    app.use(flash());
-    //var initPassport = require('./passport/init');
-    //initPassport(passport);
 
 // routes ======================================================================
       app.use('/', require('./routes/routes.js'));
