@@ -1,1 +1,0 @@
-module.exports = 'mongodb://user2:password@ds027761.mongolab.com:27761/testdbnycounihan';
