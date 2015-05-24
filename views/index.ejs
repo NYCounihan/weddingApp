@@ -5,21 +5,23 @@
 
 <body>
 
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-      <div class="header">
-        <%- include navigation-bar-public.ejs %>
-      </div><!--/ header -->
+    <div class="header">
+      <%- include navigation-bar.ejs %>
+    </div><!--/ header -->
 
-      <div class="clearfix" style="clear: both"></div>
-       
-      <div class="view-container">
-        <div ng-view class="view-frame"></div><!--/ view-frame -->
-      </div> <!--/ view-container -->
-              
-      <div class="clearfix" style="clear: both"></div>
+    <div class="clearfix" style="clear: both"></div>
+     
+    <div class="view-container">
+      <div ng-view class="view-frame"></div><!--/ view-frame -->
+    </div> <!--/ view-container -->
+            
+    <div class="clearfix" style="clear: both"></div>
 
-    </div><!--/.container fluid-->
+  </div><!--/.container fluid-->
+
+  <%- include footer.ejs %>
 
 </body>
 </html>

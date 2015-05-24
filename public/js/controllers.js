@@ -7,6 +7,7 @@ var weddingControllers = angular.module('weddingControllers', []);
 weddingControllers.controller('ScheduleCtrl',  function($scope) {
     $scope.MainTitle = "We’re Getting Married";
     $scope.SubTitle = "SATURDAY, 25<sup>th</sup> JULY 2015";
+    $scope.moduleState = false;
 }); 
 
 weddingControllers.controller('RegistryCtrl',  function($scope) {
