@@ -11,8 +11,8 @@ weddingControllers.controller('ScheduleCtrl',  function($scope) {
 }); 
 
 weddingControllers.controller('RegistryCtrl',  function($scope) {
-    $scope.MainTitle = "Registry :: please check back soon for updates";
-    $scope.SubTitle = "A few great gift ideas";
+    $scope.MainTitle = "Registry";
+    $scope.SubTitle = "A few great gift ideas below.";
 }); 
 
 weddingControllers.controller('HotelsCtrl',  function($scope) {

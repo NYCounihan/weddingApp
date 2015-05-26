@@ -24,7 +24,7 @@ weddingApp.config(['$routeProvider', '$locationProvider',
         controller: 'GuestDetailsCtrl'
       }).
       when('/registry', {
-        templateUrl: 'partials/blank.html',
+        templateUrl: 'partials/registry.html',
         controller: 'RegistryCtrl'
       }).
       when('/hotels', {
