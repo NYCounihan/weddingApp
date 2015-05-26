@@ -1,7 +1,7 @@
 .registry_macys {
     width: 200px;
     height: 200px;
-    background: url("http://logonoid.com/images/macys-logo.png");
+    background: url("/images/macys.png");
     background-size: 180px;
     background-position: center center;
     background-repeat: no-repeat;
@@ -12,12 +12,13 @@
     border: 3px solid #000;
     border-top: 0;
     margin: auto;
+    margin-bottom: 25px;
 }
 
 .registry_bloomingales {
     width: 200px;
     height: 200px;
-    background: url("http://img4.wikia.nocookie.net/__cb20130313234836/logopedia/images/e/ec/Bloomingdales_Logo.png");
+    background: url("/images/bloomingdales.png");
     background-size: 180px;
     background-position: center center;
     background-repeat: no-repeat;
@@ -28,6 +29,7 @@
     border: 3px solid #000;
     border-top: 0;
     margin: auto;
+    margin-bottom: 25px;
 }
 
 
