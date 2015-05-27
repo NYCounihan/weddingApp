@@ -21,7 +21,7 @@ exports.create = function(GuestDetail, cb) {
 exports.read = function(strName, cb) {
     console.log("mongoose GuestAccess.js : reading " + strName);
     // var query = Guest.findOne({GuestName: strName}).select({GuestName: strName, RSVInvestment : true, TotalRoundSize : true, _id : false});
-    var query = Guest.findOne({'guestNames.GuestName' : strName});
+    var query = Guest.findOne({'guestNames.GuestName' : { $regex: strName, $options: 'i' }});
     
     query.exec(function (err, guests) {
         if (err) {
