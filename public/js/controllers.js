@@ -203,6 +203,7 @@ weddingControllers.controller('AdminCtrl', ['$scope', '$route', '$http','Guest',
             var numReception = 0;
             var numWedding = 0;
             var numNotAttending = 0;
+            var numUpdated = 0;
             var numPeople = 0;
 
             for(var i=0;i<array.length;i++){
@@ -219,11 +220,12 @@ weddingControllers.controller('AdminCtrl', ['$scope', '$route', '$http','Guest',
 
                     newArray.push(guest);
 
-
                     guest.RehearsalAttending == true ? numRehearsal++ : "";
                     guest.ReceptionAttending == true ? numReception++ : "";
                     guest.WeddingAttending == true ? numWedding++ : "";
                     guest.NotAttending == true ? numNotAttending++ : "";
+                    guest.Updated = arrayRow.Updated;
+                    guest.Updated == true ? numUpdated++ : "";
                     numPeople++;
                 });
             }
@@ -234,6 +236,8 @@ weddingControllers.controller('AdminCtrl', ['$scope', '$route', '$http','Guest',
             $scope.numNotAttending = numNotAttending;
             $scope.numAttending = Math.max(numRehearsal,numReception,numWedding);
             $scope.numPeople = numPeople;
+            $scope.numUpdated = numUpdated;
+            $scope.percUpdated = Math.round((numUpdated / numPeople)*1000)/10;
 
             return newArray;
 
