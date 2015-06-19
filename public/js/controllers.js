@@ -33,7 +33,7 @@ weddingControllers.controller('TipsCtrl',  function($scope) {
 weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($scope, $http, Guest) {
         $scope.formData = {};
         $scope.MainTitle = "RSVP";
-        $scope.SubTitle = "Please RSVP by June 15th";
+        $scope.SubTitle = "Please RSVP by June 25th";
         $scope.moduleState = "login";
         $scope.buttonName = "rsvp";
 
