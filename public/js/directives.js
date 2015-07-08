@@ -13,7 +13,7 @@ weddingApp.directive('myMap', function() {
         // map config
         var mapOptions = {
           zoom: 12,
-          center: new google.maps.LatLng(40.7414248,-73.9707823),
+          center: new google.maps.LatLng(40.7358726,-73.9782909),
           panControl: false,
           zoomControl: true,
           mapTypeControl: false,
@@ -76,8 +76,7 @@ weddingApp.directive('myMap', function() {
         
         setMarker(map, new google.maps.LatLng(40.7358726,-73.9939717), 'Reception', '14th Street & 5th Avenue', 'reception');
         setMarker(map, new google.maps.LatLng(40.76383,-73.969527), 'Wedding', '61st Street & Park Avenue', 'wedding');
-        setMarker(map, new google.maps.LatLng(40.7178424,-73.9577271), 'Rehearsal', 'Location still TBD!', 'rehearsal');
-
+        setMarker(map, new google.maps.LatLng(40.7017354,-73.9782909), 'Friday BBQ', 'Brooklyn Grange Farm', 'rehearsal');
     };
 
     return {
