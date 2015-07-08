@@ -212,6 +212,7 @@ body {
     width:70px;
     height: 110px; 
     vertical-align: middle;
+    padding-top: 16px;
   }
 
 .col-fixed-description {
