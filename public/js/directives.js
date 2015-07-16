@@ -6,7 +6,6 @@ var weddingApp = angular.module('weddingApp');
 
 weddingApp.directive('myMap', function() {
 
-    var map, infoWindow;
     var markers = [];
 
     // directive link function
@@ -17,6 +16,8 @@ weddingApp.directive('myMap', function() {
 
         var latPoint = scope.lat;
         var lonPoint = scope.lon;
+
+        var map, infoWindow;
         
         // map config
         var mapOptions = {
@@ -38,6 +39,8 @@ weddingApp.directive('myMap', function() {
         function initMap() {
             if (map === void 0) {
                 map = new google.maps.Map(element[0], mapOptions);
+                scope.map = map;
+                scope.$apply();
             }
         }    
         
@@ -74,19 +77,18 @@ weddingApp.directive('myMap', function() {
 
         google.maps.event.addListener(map, 'tilesloaded', function(){
             //this part runs when the mapobject is created and rendered
+
+            for(var i=0;i<scope.markers.length;i++){
+                setMarker(map, new google.maps.LatLng(scope.markers[i].lat,scope.markers[i].lon), scope.markers[i].title, scope.markers[i].address, scope.markers[i].marker);
+            }   
+
             scope.moduleState = true;
             scope.$apply();
+
         });        
-
  
-        
-        for(var i=0;i<scope.markers.length;i++){
-            setMarker(map, new google.maps.LatLng(scope.markers[i].lat,scope.markers[i].lon), scope.markers[i].title, scope.markers[i].address, scope.markers[i].marker);
-        }
 
-        //setMarker(map, new google.maps.LatLng(40.7358726,-73.9939717), 'Reception', '14th Street & 5th Avenue', 'reception');
-        //setMarker(map, new google.maps.LatLng(40.76383,-73.969527), 'Wedding', '61st Street & Park Avenue', 'wedding');
-        //setMarker(map, new google.maps.LatLng(40.7017354,-73.9782909), 'Friday BBQ', 'Brooklyn Grange Farm', 'rehearsal');
+
     };
 
     return {
@@ -96,11 +98,9 @@ weddingApp.directive('myMap', function() {
         replace: true,
         link: link,
         controller: ["$scope", "$rootScope", function($scope, $rootScope) {
-                $rootScope.map = map;
                 
                 $scope.navigate = function(arg) {
                     google.maps.event.trigger(markers[arg], 'click');
-                    map.setCenter(markers[arg]);
                 }
 
         }]
