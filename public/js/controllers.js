@@ -116,13 +116,13 @@ weddingControllers.controller('TipsCtrl',  function($scope) {
     addMarker(40.729233, -73.98451,'Momofuku','171 1st Avenue','food','delicious noodle shop where Emily and Julian went on their first date');
     addMarker(40.7652431,-73.972003, "Pierre Hotel", "2 E 61st St", "drink", "the oldest-of-school hotels with the best martinis in the city");
     addMarker(40.7634229,-73.9699216, "Ippudo", "65 4th Ave", "food", "Most authentic Japanese ramen in the New York City; close to the reception");
-    addMarker(40.7634229,-73.9699216, "Peace Food Cafe", "41 E 11th St", "food", "Delicous vegetarian restaurant; roasted field mushroom dish is amazing");
+    addMarker(40.7333082,-73.9927888, "Peace Food Cafe", "41 E 11th St", "food", "Delicous vegetarian restaurant; roasted field mushroom dish is amazing");
     addMarker(40.7284145,-73.9820179, "Westville", "173 Avenue A", "food", "Amazing vegetable dishes; be sure to order the 5 market side plate");
     addMarker(40.7328731,-73.9878322, "Brazen Fox", "106 3rd Ave", "drink", "Relaxed craft beer bar close to the reception with great outdoor space");
     addMarker(40.7662994,-73.9657144, "East Pole", "133 E 65th St", "drink", "Quiet bar in a historic brownstone close to the reception");
     addMarker(40.740908,-74.0081505, "High Line", "438-444 W 13th St", "place","An old elevated train line converted into a striking architectural garden; Julian's favorite place in the city that stretches for over a mile");
     addMarker(40.7344046,-73.9995665, "Jefferson Market Garden", "West 9th and 6th Avenue", "place","beautiful community garden close to the reception venue; perfect place to hang out between ceremony and reception");
-    addMarker(40.7526208,-73.977802, "Campbell Apartment", "Grand Central Terminal, 15 Vanderbilt Ave", "drink", "Secret hiddent & stunning historic bar formerly owned and created by Joseph Campbell; tough to find!");
+    addMarker(40.7526208,-73.977802, "Campbell Apartment", "Grand Central Terminal, 15 Vanderbilt Ave", "drink", "Secret hidden & stunning historic bar formerly owned and created by Joseph Campbell; tough to find!");
     addMarker(40.7731698,-73.9815063, "Folk Art Museum", "2 Lincoln Square", "place","Emily is part of the Young Folk group, which leads younger demographic initiatives for the museum");
     addMarker(40.7395877,-74.0088629, "Whitney Museum", "99 Gansevoort St", "place","New building, great museum, nice outdoor spaces and views");
     addMarker(40.7288216,-73.9896756, "McSorley's", "15 E 7th St", "drink","Oldest Irish bar in the city and where Peter misspent his youth");
