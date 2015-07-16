@@ -172,10 +172,7 @@ body {
           box-sizing: border-box;
 }
 
-/*#gmaps {
-    width: 345px;
-    height: 300px;
-}*/
+
 
 .main-content-container {
   margin-top: 25px;
@@ -415,6 +412,11 @@ body {
       .head_name strong{
         font-size:62px;
       }
+
+      #gmaps {
+    width: 345px;
+    height: 300px;
+}
 }
 
 /* Extra Small Devices, Phones */ 
@@ -423,6 +425,8 @@ body {
         display: table-cell;
         float: none !important;
       }
+
+
 
 }
 
