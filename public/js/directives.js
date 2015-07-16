@@ -67,6 +67,8 @@ weddingApp.directive('myMap', function() {
                 };
                 infoWindow = new google.maps.InfoWindow(infoWindowOptions);
                 infoWindow.open(map, marker);
+
+                map.setCenter(marker.getPosition());
             });
         }
         
@@ -81,13 +83,15 @@ weddingApp.directive('myMap', function() {
 
             for(var i=0;i<scope.markers.length;i++){
                 setMarker(map, new google.maps.LatLng(scope.markers[i].lat,scope.markers[i].lon), scope.markers[i].title, scope.markers[i].address, scope.markers[i].marker);
+
+ 
+
             }   
 
             scope.moduleState = true;
             scope.$apply();
 
-        });        
- 
+        });
 
 
     };
