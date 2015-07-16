@@ -36,7 +36,7 @@ weddingApp.config(['$routeProvider', '$locationProvider',
         controller: 'TravelCtrl'
       }).
       when('/tips', {
-        templateUrl: 'partials/blank.html',
+        templateUrl: 'partials/tips.html',
         controller: 'TipsCtrl'
       }).
       when('/admin', {

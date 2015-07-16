@@ -5,15 +5,23 @@
 var weddingApp = angular.module('weddingApp');
 
 weddingApp.directive('myMap', function() {
+
+    var map, infoWindow;
+    var markers = [];
+
     // directive link function
     var link = function(scope, element, attrs) {
-        var map, infoWindow;
-        var markers = [];
+
+        element.css("height",scope.mapHeight);
+        element.css("width",scope.mapWidth);
+
+        var latPoint = scope.lat;
+        var lonPoint = scope.lon;
         
         // map config
         var mapOptions = {
           zoom: 12,
-          center: new google.maps.LatLng(40.7358726,-73.9782909),
+          center: new google.maps.LatLng(latPoint,lonPoint),
           panControl: false,
           zoomControl: true,
           mapTypeControl: false,
@@ -24,12 +32,7 @@ weddingApp.directive('myMap', function() {
           styles: [ { "featureType": "poi.business", "stylers": [ { "visibility": "off" } ] },{ "featureType": "poi.government", "stylers": [ { "visibility": "off" } ] },{ "featureType": "poi.medical", "stylers": [ { "visibility": "off" } ] },{ "featureType": "poi.place_of_worship", "stylers": [ { "visibility": "off" } ] },{ "featureType": "poi.school", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road.highway", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road.arterial", "stylers": [ { "visibility": "simplified" } ] },{ "featureType": "poi", "elementType": "geometry.fill", "stylers": [ { "color": "#ffffff" }, { "visibility": "off" } ] },{ "featureType": "water", "stylers": [ { "color": "#ffffff" } ] },{ "featureType": "administrative", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road" } ]
         };
 
-        var icons = {
-          reception:  'images/circle_party_extrasmall.png',
-          wedding: 'images/circle_heart_extrasmall.png',
-          rehearsal: 'images/circle_pig_extrasmall.png'
-        };
-
+        var icons = scope.icons;
         
         // init the map
         function initMap() {
@@ -41,6 +44,7 @@ weddingApp.directive('myMap', function() {
         // place a marker
         function setMarker(map, position, title, content, iconType) {
             var marker;
+            
             var markerOptions = {
                 position: position,
                 map: map,
@@ -74,17 +78,28 @@ weddingApp.directive('myMap', function() {
             scope.$apply();
         });
         
-        setMarker(map, new google.maps.LatLng(40.7358726,-73.9939717), 'Reception', '14th Street & 5th Avenue', 'reception');
-        setMarker(map, new google.maps.LatLng(40.76383,-73.969527), 'Wedding', '61st Street & Park Avenue', 'wedding');
-        setMarker(map, new google.maps.LatLng(40.7017354,-73.9782909), 'Friday BBQ', 'Brooklyn Grange Farm', 'rehearsal');
+        for(var i=0;i<scope.markers.length;i++){
+            setMarker(map, new google.maps.LatLng(scope.markers[i].lat,scope.markers[i].lon), scope.markers[i].title, scope.markers[i].address, scope.markers[i].marker);
+        }
+
+        //setMarker(map, new google.maps.LatLng(40.7358726,-73.9939717), 'Reception', '14th Street & 5th Avenue', 'reception');
+        //setMarker(map, new google.maps.LatLng(40.76383,-73.969527), 'Wedding', '61st Street & Park Avenue', 'wedding');
+        //setMarker(map, new google.maps.LatLng(40.7017354,-73.9782909), 'Friday BBQ', 'Brooklyn Grange Farm', 'rehearsal');
     };
 
     return {
         restrict: 'A',
         scope: false,
-        template: '<div id="gmaps"></div>',
+        template: '<div id="gmaps" ></div>',
         replace: true,
-        link: link
+        link: link,
+        controller: ["$scope", "$rootScope", function($scope, $rootScope) {
+                $rootScope.map = map;
+                
+                $scope.navigate = function(arg) {
+                    google.maps.event.trigger(markers[arg], 'click');
+                }
+            }]
     };
 });
 
@@ -100,3 +115,5 @@ weddingApp.directive('visible', function() {
     }
   };
 });
+
+

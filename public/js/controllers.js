@@ -8,6 +8,45 @@ weddingControllers.controller('ScheduleCtrl',  function($scope) {
     $scope.MainTitle = "We’re Getting Married";
     $scope.SubTitle = "SATURDAY, 25<sup>th</sup> JULY 2015";
     $scope.moduleState = false;
+
+    $scope.icons = {
+          reception:  'images/circle_party_extrasmall.png',
+          wedding: 'images/circle_heart_extrasmall.png',
+          rehearsal: 'images/circle_pig_extrasmall.png'
+    };
+
+    $scope.lat = 40.7358726;
+    $scope.lon = -73.9782909;
+
+    $scope.mapWidth = "345px";
+    $scope.mapHeight = "300px";
+
+    $scope.markers = [];
+
+    $scope.markers.push({
+            "lat" : 40.7358726,
+            "lon": -73.9939717,
+            "title": 'Reception',
+            "address": '14th Street & 5th Avenue',
+            "marker": 'reception'
+    });
+
+    $scope.markers.push({
+            "lat" : 40.76383,
+            "lon": -73.969527,
+            "title": 'Wedding',
+            "address": '61st Street & Park Avenue',
+            "marker": 'wedding'
+    });
+
+    $scope.markers.push({
+            "lat" : 40.7017354,
+            "lon": -73.9782909,
+            "title": 'Friday BBQ',
+            "address": 'Brooklyn Navy Yard, Building #3',
+            "marker": 'rehearsal'
+    });
+        
 }); 
 
 weddingControllers.controller('RegistryCtrl',  function($scope) {
@@ -26,8 +65,50 @@ weddingControllers.controller('TravelCtrl',  function($scope) {
 }); 
 
 weddingControllers.controller('TipsCtrl',  function($scope) {
-    $scope.MainTitle = "Tips :: please check back soon for updates";
+    $scope.MainTitle = "Tips";
     $scope.SubTitle = "Fun things to do while you're here";
+    $scope.moduleState = false;
+
+    $scope.lat = 40.7358726;
+    $scope.lon = -73.9782909;
+
+    $scope.mapWidth = "700px";
+    $scope.mapHeight = "200px";
+
+    $scope.places = [];
+    $scope.foods = [];
+    $scope.drinks = [];
+
+    $scope.icons = {
+          food:  'images/map_food.png',
+          place: 'images/map_place.png',
+          drink: 'images/map_drink.png'
+    };
+
+    $scope.markers = [];
+
+    var addMarker = function(lat, lon, title, address, marker, description){
+
+        var id = $scope.markers.length;
+
+        $scope.markers.push({
+            "lat" : lat,
+            "lon": lon,
+            "title": title,
+            "address": address,
+            "marker": marker,
+            "id" : id
+        });
+
+        switch (marker) {
+            case "place": $scope.places.push({"id": id, "title" : title, "description" : description}); 
+            case "food" : $scope.foods.push({"id": id, "title" : title, "description" : description}); 
+            case "drink" : $scope.drinks.push({"id": id, "title" : title, "description" : description}); 
+        }
+    };
+
+    addMarker(40.729233, -73.98451,'Momofuku','171 1st Avenue','food','delicious noodle shop where Emily and Julian went on their first date');
+
 }); 
 
 weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($scope, $http, Guest) {

@@ -1,0 +1,49 @@
+<div class="head_title ">
+    <h1>{{MainTitle}}</h1>
+    <p class="sub_title" ng-bind-html="SubTitle | to_trusted"></p>
+</div>
+
+<div class="main-content-container">
+    
+    <div class="heartbeat" ng-hide="moduleState">
+        Loading...
+    </div>
+    
+    <div class="row row-centered" style="visible: false" visible="moduleState">
+
+        <div class="row row-centered">
+            <div class="col-xs-12 col-centered col-full-box-content" style="padding: 0px; margin-right: 0px">
+                <div my-map=""></div>
+            </div>
+        </div>
+
+    <div class="row row-centered" style="margin-top: 20px; ">
+
+            <div class="col-xs-12 col-sm-2 col-centered col-3box-content" ng-repeat="x in places">
+                <div class="tip-item" ng-click="navigate(x.id)"><img src="images/map_place.png">
+                    <span class="tip_title">{{x.title}}</span>
+                    <div class="tip_description">{{x.description}}</div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-centered col-3box-content" ng-repeat="y in foods">
+                <div class="tip-item" ng-click="navigate(y.id)"><img src="images/map_food.png">
+                    <span class="tip_title">{{y.title}}</span>
+                    <div class="tip_description">{{y.description}}</div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-centered col-3box-content" ng-repeat="z in drinks">
+                <div class="tip-item" ng-click="navigate(z.id)"><img src="images/map_drink.png">
+                    <span class="tip_title">{{z.title}}</span>
+                    <div class="tip_description">{{z.description}}</div>
+                </div>
+            </div>
+
+            
+
+      </div>
+  </div>
+
+    </div><!--/ row -->
+</div><!--/ main-content-container -->    
