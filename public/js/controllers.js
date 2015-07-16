@@ -116,25 +116,33 @@ weddingControllers.controller('TipsCtrl',  function($scope) {
         }
     };
 
-    addMarker(40.729233, -73.98451,'Momofuku','171 1st Avenue','food','delicious noodle shop where Emily and Julian went on their first date');
-    addMarker(40.7652431,-73.972003, "Pierre Hotel", "2 E 61st St", "drink", "the oldest-of-school hotels with the best martinis in the city");
-    addMarker(40.7634229,-73.9699216, "Ippudo", "65 4th Ave", "food", "most authentic Japanese ramen in the New York City; close to the reception");
-    addMarker(40.7333082,-73.9927888, "Peace Food Cafe", "41 E 11th St", "food", "delicous vegetarian restaurant; roasted field mushroom dish is amazing");
-    addMarker(40.7284145,-73.9820179, "Westville", "173 Avenue A", "food", "amazing vegetable dishes; be sure to order the 5 market side plate");
-    addMarker(40.7328731,-73.9878322, "Brazen Fox", "106 3rd Ave", "drink", "relaxed craft beer bar close to the reception with great outdoor space");
-    addMarker(40.7662994,-73.9657144, "East Pole", "133 E 65th St", "drink", "1uiet bar in a historic brownstone close to the reception");
-    addMarker(40.740908,-74.0081505, "High Line", "438-444 W 13th St", "place","an old elevated train line converted into a striking architectural garden; Julian's favorite place in the city that stretches for over a mile");
-    addMarker(40.7344046,-73.9995665, "Jefferson Market Garden", "West 9th and 6th Avenue", "place","beautiful community garden close to the reception venue; perfect place to hang out between ceremony and reception");
-    addMarker(40.7526208,-73.977802, "Campbell Apartment", "Grand Central Terminal, 15 Vanderbilt Ave", "drink", "secret hidden & stunning historic bar formerly owned and created by Joseph Campbell; tough to find!");
+    
+    
+    
+    addMarker(40.740908,-74.0081505, "High Line", "438-444 W 13th St", "place","an old elevated train line converted into a striking architectural garden that stretches for over a mile; great for Saturday morning and one of Julian's favorites");
+    addMarker(40.7344046,-73.9995665, "Jefferson Market Garden", "West 9th and 6th Avenue", "place","tranquil community garden close to the reception venue; perfect place to hang out between ceremony and reception");
+    addMarker(40.7308696,-73.9976059, "Washington Square Park", "", "place", "peaceful park surround by the NYU campus where Emily is earning her graduate degree; be sure to check out Washington Mews Street one block north");
     addMarker(40.7731698,-73.9815063, "Folk Art Museum", "2 Lincoln Square", "place","emily is part of the Young Folk group, which leads younger demographic initiatives for the museum");
-    addMarker(40.7395877,-74.0088629, "Whitney Museum", "99 Gansevoort St", "place","new building, great museum, nice outdoor spaces and views");
-    addMarker(40.7288216,-73.9896756, "McSorley's", "15 E 7th St", "drink","oldest Irish bar in the city and where Peter misspent his youth");
-    addMarker(40.7146369,-73.9986091, "Peking Duck House", "28 Mott St", "food","great low-key Chinese restaurant where Julian's dad took his grandfather on his visit to the United States");
-    addMarker(40.7259381,-74.0096032, "Ear Inn", "326 Spring St", "drink", "Old bar; julian recommends that you do not go");
-    addMarker(40.7308696,-73.9976059, "Washington Square Park", "", "place", "beautiful park surround by the NYU campus where Emily is earning her graduate degree; be sure to check out Washington Mews Street one block north");
-    addMarker(40.7196392,-73.9897077, "Russ & Daughters Cafe", "127 Orchard St", "food", "hands down the best Jewish deli in the city; pretty pricey so for a few dollars less try Katz's Deli nearby");
-    addMarker(40.7196392,-73.9897077, "Superiority Burger", "430 E 9th St", "food", "newest and 'coolest' vegetarian burger in the city; prepare to wait in line!");
+    addMarker(40.7738431,-73.9708597, "Central Park", "Between 59th and 110th streets", "place","enter at 64th and 5th, walk through the children's zoo and down the Mall toward the Bethesda Terrace before grabbing a bite at the Boathouse");
+    addMarker(40.7395877,-74.0088629, "Whitney Museum", "99 Gansevoort St", "place","just opened, this modern art museum has fantastic art and plenty of outdoor spaces");
+    
+    addMarker(40.7652431,-73.972003, "Pierre Hotel", "2 E 61st St", "drink", "the oldest-of-school hotels with the best martinis in the city");
+    addMarker(40.7526208,-73.977802, "Campbell Apartment", "Grand Central Terminal, 15 Vanderbilt Ave", "drink", "secret hidden & stunning historic bar formerly owned and created by Joseph Campbell; tough to find!");
+    addMarker(40.761417,-73.974691, "St. Regis", "2 E 55th St", "drink", "round out the pierre-campbell-regis trifecta with the famous Nat King Cole bar where the bloody mary was invented");
+    addMarker(40.7328731,-73.9878322, "Brazen Fox", "106 3rd Ave", "drink", "relaxed craft beer bar close to the reception with great outdoor space");
+    addMarker(40.7662994,-73.9657144, "East Pole", "133 E 65th St", "drink", "quiet bar in a historic brownstone close to the reception");
     addMarker(40.7271653,-73.988971, "Lit Lounge", "93 2nd Ave", "drink", "grimy, cool and where Gus & Julian have celebrated many birthdays; last place in NYC to allow smoking indoors");
+    addMarker(40.7288216,-73.9896756, "McSorley's", "15 E 7th St", "drink","oldest Irish bar in the city and where Peter misspent his youth");
+    
+    addMarker(40.7284145,-73.9820179, "Westville", "173 Avenue A", "food", "amazing vegetable dishes; be sure to order the 5 market side plate");
+    addMarker(40.729233, -73.98451,'Momofuku','171 1st Avenue','food','delicious noodle shop where Emily and Julian went on their first date');
+    addMarker(40.7146369,-73.9986091, "Peking Duck House", "28 Mott St", "food","great low-key Chinese restaurant where Julian's dad took his grandfather on his visit to the United States");
+    addMarker(40.7634229,-73.9699216, "Ippudo", "65 4th Ave", "food", "most authentic Japanese ramen in the New York City; close to the reception");
+    addMarker(40.7196392,-73.9897077, "Russ & Daughters Cafe", "127 Orchard St", "food", "hands down the best Jewish deli in the city; pretty pricey so for a few dollars less try Katz's Deli nearby");
+    addMarker(40.7344232,-73.9811666, "Superiority Burger", "430 E 9th St", "food", "newest and 'coolest' vegetarian burger in the city; prepare to wait in line!");
+    addMarker(40.7333082,-73.9927888, "Peace Food Cafe", "41 E 11th St", "food", "delicous vegetarian restaurant; roasted field mushroom dish is amazing");
+    addMarker(40.7232362,-73.9879218, "Cafe Himalaya", "78 E 1st St", "food", "delicious thai-himalayan style food at incredible prices");
+    
 }); 
 
 weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($scope, $http, Guest) {
