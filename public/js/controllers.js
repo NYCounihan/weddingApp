@@ -130,7 +130,7 @@ weddingControllers.controller('TipsCtrl',  function($scope) {
     addMarker(40.7259381,-74.0096032, "Ear Inn", "326 Spring St", "drink", "Old bar; Julian recommends that you do not go");
     addMarker(40.7308696,-73.9976059, "Washington Square Park", "", "place", "Beautiful park surround by the NYU campus where Emily is earning her graduate degree; be sure to check out Washington Mews Street one block north");
     addMarker(40.7196392,-73.9897077, "Russ & Daughters Cafe", "127 Orchard St", "food", "Hands down the best Jewish deli in the city; pretty pricey so for a few dollars less try Katz's Deli nearby");
-    addMarker(40.7196392,-73.9897077, "Superiority Burger", "430 E 9th St", "food", "Newest and 'coolest' vegetarian burger in the city; prepare to wait in line with the cool kids!");
+    addMarker(40.7196392,-73.9897077, "Superiority Burger", "430 E 9th St", "food", "Newest and 'coolest' vegetarian burger in the city; prepare to wait in line!");
     addMarker(40.7271653,-73.988971, "Lit Lounge", "93 2nd Ave", "drink", "Grimy, cool and where Gus & Julian have celebrated many birthdays; last place in NYC to allow smoking indoors");
 }); 
 
