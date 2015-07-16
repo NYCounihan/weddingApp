@@ -39,8 +39,6 @@ weddingApp.directive('myMap', function() {
         function initMap() {
             if (map === void 0) {
                 map = new google.maps.Map(element[0], mapOptions);
-                scope.map = map;
-                scope.$apply();
             }
         }    
         
@@ -78,6 +76,9 @@ weddingApp.directive('myMap', function() {
         google.maps.event.addListener(map, 'tilesloaded', function(){
             //this part runs when the mapobject is created and rendered
 
+            markers = null;
+            markers = [];
+
             for(var i=0;i<scope.markers.length;i++){
                 setMarker(map, new google.maps.LatLng(scope.markers[i].lat,scope.markers[i].lon), scope.markers[i].title, scope.markers[i].address, scope.markers[i].marker);
             }   
@@ -101,6 +102,7 @@ weddingApp.directive('myMap', function() {
                 
                 $scope.navigate = function(arg) {
                     google.maps.event.trigger(markers[arg], 'click');
+                    console.log("arg is " + arg);
                 }
 
         }]

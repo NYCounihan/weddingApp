@@ -91,6 +91,9 @@ weddingControllers.controller('TipsCtrl',  function($scope) {
 
         var id = $scope.markers.length;
 
+        console.log ("title is " + title + " and id is " + id);
+
+
         $scope.markers.push({
             "lat" : lat,
             "lon": lon,
