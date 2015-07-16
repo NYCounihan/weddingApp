@@ -63,7 +63,7 @@ weddingApp.directive('myMap', function() {
                 }
                 // create new window
                 var infoWindowOptions = {
-                    content: content
+                    content: "<div class='tip_title'>" + title + "</div>" + content
                 };
                 infoWindow = new google.maps.InfoWindow(infoWindowOptions);
                 infoWindow.open(map, marker);
