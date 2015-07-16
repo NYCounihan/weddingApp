@@ -19,30 +19,33 @@
 
     <div class="row row-centered" style="margin-top: 20px; ">
 
-            <div class="col-xs-12 col-sm-2 col-centered col-3box-content" ng-repeat="x in places">
-                <div class="tip-item" ng-click="navigate(x.id)"><img src="images/map_place.png">
+            <div class="col-xs-12 col-sm-2 col-centered col-3box-content">
+                <div class="tip-item" ng-click="navigate(x.id)" ng-repeat="x in places">
+                    <img src="images/map_place.png" >
                     <span class="tip_title">{{x.title}}</span>
                     <div class="tip_description">{{x.description}}</div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-2 col-centered col-3box-content" ng-repeat="y in foods">
-                <div class="tip-item" ng-click="navigate(y.id)"><img src="images/map_food.png">
+            <div class="col-xs-12 col-sm-2 col-centered col-3box-content" >
+                <div class="tip-item" ng-click="navigate(y.id)" ng-repeat="y in foods">
+                    <img src="images/map_food.png">
                     <span class="tip_title">{{y.title}}</span>
                     <div class="tip_description">{{y.description}}</div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-2 col-centered col-3box-content" ng-repeat="z in drinks">
-                <div class="tip-item" ng-click="navigate(z.id)"><img src="images/map_drink.png">
-                    <span class="tip_title">{{z.title}}</span>
-                    <div class="tip_description">{{z.description}}</div>
+            <div class="col-xs-12 col-sm-2 col-centered col-3box-content" >
+                <div class="tip-item" ng-click="navigate(j.id)" ng-repeat="j in drinks">
+                    <img src="images/map_place.png">
+                    <span class="tip_title">{{j.title}}</span>
+                    <div class="tip_description">{{j.description}}</div>
                 </div>
-            </div>
-
-            
+            </div>       
 
       </div>
+
+      <div style-"margin-bottom: 30px; height: 40px;"><hr></div>
   </div>
 
     </div><!--/ row -->

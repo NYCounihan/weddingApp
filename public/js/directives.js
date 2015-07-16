@@ -76,7 +76,9 @@ weddingApp.directive('myMap', function() {
             //this part runs when the mapobject is created and rendered
             scope.moduleState = true;
             scope.$apply();
-        });
+        });        
+
+ 
         
         for(var i=0;i<scope.markers.length;i++){
             setMarker(map, new google.maps.LatLng(scope.markers[i].lat,scope.markers[i].lon), scope.markers[i].title, scope.markers[i].address, scope.markers[i].marker);
@@ -98,8 +100,10 @@ weddingApp.directive('myMap', function() {
                 
                 $scope.navigate = function(arg) {
                     google.maps.event.trigger(markers[arg], 'click');
+                    map.setCenter(markers[arg]);
                 }
-            }]
+
+        }]
     };
 });
 
