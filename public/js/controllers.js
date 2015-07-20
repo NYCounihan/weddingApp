@@ -150,7 +150,7 @@ weddingControllers.controller('RSVPCtrl', ['$scope','$http','Guest', function($s
         $scope.MainTitle = "RSVP";
         $scope.SubTitle = "Please RSVP by June 25th";
         $scope.moduleState = "login";
-        $scope.buttonName = "rsvp";
+        $scope.buttonName = "update rsvp";
 
 
         // FIND GUEST ==================================================================

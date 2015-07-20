@@ -8,7 +8,8 @@ var guestNames = new mongoose.Schema({
     RehearsalAttending : Boolean,
     WeddingAttending : Boolean,
     ReceptionAttending : Boolean,
-    NotAttending : Boolean
+    NotAttending : Boolean,
+    RehearsalBus : Boolean
   });
 
 module.exports = mongoose.model('Guest', {

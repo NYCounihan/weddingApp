@@ -98,7 +98,18 @@
 						        <span class="tasks-list-desc" >Not Attending</span>
 					        </div>
 				        </div></div>
-    			</div></div> <!-- end guestNames loop -->
+    			</div>
+
+    			<div class="row row-centered">
+		  				<div class="col-xs-12 col-centered col-full-box-content">
+								<label class="tasks-list-item" />
+						        <input type="checkbox" id="RehearsalBus" name="RehearsalBus" ng-model="guestRow.RehearsalBus" class="tasks-list-cb" ng-change="attendDetails()">
+						        <span class="tasks-list-mark"></span>
+						        <span class="tasks-list-desc">I'd like to reserve a seat on the bus leaving Union Sq. Hyatt @ 6pm</span>
+				        </div>
+    			</div>
+
+    			</div> <!-- end guestNames loop -->
 
     			<div class="form-group row">
 				<div class="col-sm-12 col-md-6 col-lg-6 col-centered col-box-content form-group">
