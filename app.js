@@ -1,44 +1,40 @@
-// set up ======================================================================
-var express = require('express')
-  , app = express()
-  , mongoose = require('mongoose')
-  , http = require('http')
-  , path = require('path')
-  , data = require('./model/db')
-  , router = require('./routes/routes.js');
+const express = require('express');
+const { Pool } = require('pg');
 
-  //  var favicon = require('serve-favicon'); 
-    var logger = require('morgan');
-    var methodOverride = require('method-override');
-    var bodyParser = require('body-parser');
-    var multer = require('multer');
-    var errorHandler = require('errorhandler');
+const app = express();
+const port = 3000;
 
-// configuration ==================================================================
-    app.set('port', process.env.PORT || 3000);
-    app.set('views', __dirname + '/views'); //deliver dynamic template files
-    app.set('view engine', 'ejs');
+// PostgreSQL connection pool
+const pool = new Pool({
+  user: 'rootabega',
+  host: 'localhost',
+  database: 'dbtest',
+  password: 'nashville',
+  port: 5432,
+});
 
-    //app.use(favicon(__dirname + '/public/favicon.ico'));
-    app.use(logger('dev'));
-    app.use(methodOverride());
+// Route to get data from the database and display it
+app.get('/', async (req, res) => {
+  try {
+    const result = await pool.query('select * from tblMain;');
+    const rows = result.rows;
 
-    // parse application/json
-    app.use(bodyParser.json());                        
-
-    // parse application/x-www-form-urlencoded
-    app.use(bodyParser.urlencoded({ extended: true }));
-
-    // parse multipart/form-data
-    app.use(multer());
-
-    app.use(express.static(path.join(__dirname, 'public'))); //deliver things like images and such
-
-// routes ======================================================================
-      app.use('/', require('./routes/routes.js'));
-    //  app.use('/', require('./routes/passportRoutes.js')(passport));
-
-    http.createServer(app).listen(app.get('port'), function(){
-      console.log('Express server listening on port ' + app.get('port'));
-    
+    let html = '<div>';
+    rows.forEach(row => {
+      html += `<div>${JSON.stringify(row)}</div>`;
     });
+    html += '</div>';
+
+    res.send(html);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+
+

@@ -1,4 +1,4 @@
-var mongoose = require( 'mongoose' );
+/*//var mongoose = require( 'mongoose' );
 
 var guestNames = new mongoose.Schema({
     GuestName : {type : String, default: ''},
@@ -23,4 +23,4 @@ module.exports = mongoose.model('Guest', {
   GuestsAttending : {type : Number, default: ''},
   Updated : {type : Boolean, default: false},
   HomeAddress : {type : String, default: ''}
-});
+});*/

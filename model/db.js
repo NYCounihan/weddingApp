@@ -1,4 +1,5 @@
 // Bring Mongoose into the app
+/*
 var mongoose = require( 'mongoose' );
 // mongodb-uri 0.9.x
 var uriUtil = require('mongodb-uri');
@@ -9,7 +10,7 @@ var dbURI = require('./dbconfig.js');
  * We recommend setting socket options at both the server and replica set level.
  * We recommend a 30 second connection timeout because it allows for 
  * plenty of time in most operating environments.
- */
+ 
 var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };       
  
@@ -48,3 +49,4 @@ process.on('SIGINT', function() {
 // BRING IN YOUR SCHEMAS & MODELS
 // For example
 require('./guest'); 
+*/

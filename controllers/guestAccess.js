@@ -1,4 +1,4 @@
-var mongoose = require( 'mongoose' ),
+/*var mongoose = require( 'mongoose' ),
     Guest = mongoose.model('Guest');
 
 exports.create = function(GuestDetail, cb) {
@@ -85,3 +85,4 @@ exports.update = function(GuestDetails, cb) {
     });
 
 }
+*/

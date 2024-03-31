@@ -1,1 +1,1 @@
-module.exports = 'mongodb://<username>:<password>@<server>:<database>/<collection>';
+//module.exports = 'mongodb://<username>:<password>@<server>:<database>/<collection>';
