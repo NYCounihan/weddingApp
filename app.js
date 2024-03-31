@@ -9,7 +9,7 @@ const pool = new Pool({
   user: 'rootabega',
   host: 'localhost',
   database: 'dbtest',
-  password: 'nashville',
+  password: 'myPassword',
   port: 5432,
 });
 
